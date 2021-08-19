@@ -1,0 +1,40 @@
+from google.colab import files
+icec = files.upload()
+
+import csv
+f= open('iceweather.csv', encoding = 'euc-kr')
+data = csv.reader(f)
+temp=[]
+ice=[]
+
+
+for row in data:
+    temp.append(float(row[1]))
+    ice.append(float(row[4]))
+    
+print(temp)
+
+import matplotlib.pyplot as plt
+import tensorflow as tf
+
+
+model = tf.keras.models.Sequential([
+                  tf.keras.layers.Dense(5, input_dim = 1),
+                  tf.keras.layers.Dense(3),
+                  tf.keras.layers.Dense(1),
+])
+
+model.compile(loss = 'mean_squared_error', optimizer = 'adam')
+
+
+model.fit(temp, ice, epochs = 1000)
+
+
+plt.plot(temp,ice,'bx')
+plt.plot(temp,model.predict(temp),'Red')
+plt.legend()
+plt.show()
+
+
+a=[100]
+model.predict(a)
