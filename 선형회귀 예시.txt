@@ -1,0 +1,35 @@
+import tensorflow as tf
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+num = 2000
+vet = []
+for i in range(num):
+  x1 = np.random.normal(0, 0.55)
+  y1 = x1*1.7 + 0.7 + np.random.normal(0,0.55)
+  vet.append([x1,y1])
+x_data = [v[0] for v in vet]
+y_data = [v[1] for v in vet]
+
+
+plt.plot(x_data, y_data, 'bo')
+plt.legend()
+plt.show()
+
+
+lee = tf.keras.models.Sequential([
+       tf.keras.layers.Dense(1, input_dim=1)
+])
+
+
+lee.compile(loss='mean_squared_error', optimizer='adam')
+
+
+lee.fit(x_data,y_data, epochs=50)
+
+
+plt.plot(x_data, y_data, 'bo')
+plt.plot(x_data, lee.predict(x_data), 'Red')
+plt.legend()
+plt.show()
