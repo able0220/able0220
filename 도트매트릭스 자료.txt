@@ -18,7 +18,7 @@ void loop()
 
  for(col = 0; col <8 ; col=col+2)
  {
-  for(row = 0; row <8 ; col=col+2)
+  for(row = 0; row <8 ; row=row+2)
  {
   lc.setLed(0,col,row,true);
  }
