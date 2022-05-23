@@ -1,0 +1,28 @@
+#include "LedControl.h"
+LedControl lc=LedControl(12,11,10,1); 
+
+int col = 0;
+int row = 0;
+// lc.setLed(0,col,row,true);
+// lc.setLed(0,col,row,false); 
+void setup()
+{
+  lc.shutdown(0,false); 
+  lc.setIntensity(0,8); 
+  lc.clearDisplay(0); 
+}
+
+
+void loop()
+{
+
+ for(col = 0; col <8 ; col=col+2)
+ {
+  for(row = 0; row <8 ; col=col+2)
+ {
+  lc.setLed(0,col,row,true);
+ }
+ }
+
+
+}
