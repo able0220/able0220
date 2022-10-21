@@ -1,0 +1,22 @@
+from google.colab import files
+icec = files.upload()
+
+import csv
+f= open('iceweather.csv', encoding = 'euc-kr')
+data = csv.reader(f)
+temp=[]
+ice=[]
+
+
+for row in data:
+    temp.append(float(row[1]))
+    ice.append(float(row[4]))
+    
+print(temp)
+
+import matplotlib.pyplot as plt
+import tensorflow as tf
+
+plt.plot(temp,ice,'bx')
+plt.legend()
+plt.show()
