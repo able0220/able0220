@@ -1,0 +1,79 @@
+
+import tensorflow as tf
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+fashion_mnist = tf.keras.datasets.fashion_mnist
+(train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
+
+
+
+plt.figure()
+plt.imshow(train_images[1])
+plt.colorbar()
+plt.grid(False)
+plt.show()
+
+
+train_images = train_images / 255.0
+test_images = test_images / 255.0
+
+
+plt.figure()
+plt.imshow(train_images[0])
+plt.colorbar()
+plt.grid(False)
+plt.show()
+
+
+
+model = tf.keras.Sequential([
+    tf.keras.layers.Flatten(input_shape=(28, 28)),
+    tf.keras.layers.Dense(128, activation='relu'),
+    tf.keras.layers.Dense(10)
+])
+
+
+
+model.compile(optimizer='adam',
+              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+              metrics=['accuracy'])
+
+
+
+model.fit(train_images, train_labels, epochs=10)
+
+
+prediction = model.predict(test_images)
+
+
+
+np.argmax(prediction[10])
+
+
+plt.figure()
+plt.imshow(test_images[10])
+plt.colorbar()
+plt.grid(False)
+plt.show()
+
+
+
+
+from PIL import Image
+import cv2
+
+
+gray = cv2.imread("test1.png", cv2.IMREAD_GRAYSCALE)
+plt.imshow(gray)
+
+
+gray = cv2.resize(255-gray, (28,28))
+test_num = gray.flatten() / 255.0
+test_num = test_num.reshape((-1,28,28,1))
+
+
+
+
+np.argmax(model.predict(test_num))
