@@ -164,6 +164,10 @@ class DeepDream(tf.Module):
 
       return loss, img
 
+
+deepdream = DeepDream(dream_model)
+
+
 # 딥드림 알고리즘의 모델 실행 방법 정리
 def run_deep_dream_simple(img, steps=100, step_size=0.01):
   # Convert from uint8 to the range expected by the model.
