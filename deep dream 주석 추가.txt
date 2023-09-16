@@ -1,4 +1,4 @@
-// 사진을 찍기 위한 로드 구간
+# 사진을 찍기 위한 로드 구간
 
 from IPython.display import display, Javascript
 from google.colab.output import eval_js
@@ -45,7 +45,7 @@ def take_photo(filename='photo.jpg', quality=0.8):
 
 
 
-// 사진 촬영 구간 사진을 찍으면 photo.jpg 저장 됨
+# 사진 촬영 구간 사진을 찍으면 photo.jpg 저장 됨
 from IPython.display import Image
 try:
   filename = take_photo()
@@ -61,17 +61,17 @@ except Exception as err:
 
 
 
-// 기본 라이브러리 호출
+# 기본 라이브러리 호출
 import tensorflow as tf
 import numpy as np
 import matplotlib as mpl
 import IPython.display as display
 import PIL.Image
-// 경로 지정
+# 경로 지정
 file_path = 'photo.jpg'
 
 
-// 이미지 변환 및 사진 촬영
+# 이미지 변환 및 사진 촬영
 # Download an image and read it into a NumPy array.
 def load_image(file_path, max_dim=None):
     img = PIL.Image.open(file_path)
@@ -94,13 +94,13 @@ image_path = 'photo.jpg'
 original_img = load_image(image_path, max_dim=500)
 show(original_img)
 
-// 인셉션 v3 모델 로드(텐서플로우 제공 딥드립용 모델)
+# 인셉션 v3 모델 로드(텐서플로우 제공 딥드립용 모델)
 base_model = tf.keras.applications.InceptionV3(include_top=False, weights='imagenet')
 
 
 
-// 인셉션 모델에 있는 mixed 0~ 11까지 레이어중 어떤 레이어 쓸지
-// 레이어 숫자가 높을 수록 고차원적인 특징 추출
+# 인셉션 모델에 있는 mixed 0~ 11까지 레이어중 어떤 레이어 쓸지
+# 레이어 숫자가 높을 수록 고차원적인 특징 추출
 # Maximize the activations of these layers
 names = ['mixed1', 'mixed4']
 layers = [base_model.get_layer(name).output for name in names]
@@ -110,7 +110,7 @@ dream_model = tf.keras.Model(inputs=base_model.input, outputs=layers)
 
 
 
-// 손실함수에 대한 정의
+# 손실함수에 대한 정의
 def calc_loss(img, model):
   # Pass forward the image through the model to retrieve the activations.
   # Converts the image into a batch of size 1.
@@ -129,7 +129,7 @@ def calc_loss(img, model):
 
 
 
-// 딥드림 알고리즘의 모델 정의
+# 딥드림 알고리즘의 모델 정의
 
 class DeepDream(tf.Module):
   def __init__(self, model):
@@ -164,7 +164,7 @@ class DeepDream(tf.Module):
 
       return loss, img
 
-// 딥드림 알고리즘의 모델 실행 방법 정리
+# 딥드림 알고리즘의 모델 실행 방법 정리
 def run_deep_dream_simple(img, steps=100, step_size=0.01):
   # Convert from uint8 to the range expected by the model.
   img = tf.keras.applications.inception_v3.preprocess_input(img)
@@ -193,6 +193,6 @@ def run_deep_dream_simple(img, steps=100, step_size=0.01):
 
   return result
 
-// 데이터를 이용한 최종 실행
+# 데이터를 이용한 최종 실행
 dream_img = run_deep_dream_simple(img=original_img,
                                   steps=100, step_size=0.01)
