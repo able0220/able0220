@@ -1,0 +1,91 @@
+from google.colab import files
+icec = files.upload()
+
+import csv
+f= open('iceweather.csv', encoding = 'euc-kr')
+data = csv.reader(f)
+temp=[]
+ice=[]
+humid=[]
+
+
+
+for row in data:
+    temp.append(float(row[1]))
+    ice.append(float(row[4]))
+    humid.append(float(row[5]))
+
+print(temp)
+
+print(humid)
+
+
+import matplotlib.pyplot as plt
+import tensorflow as tf
+import numpy as np
+
+
+X = np.column_stack((temp, humid))
+Y = np.array(ice, dtype=np.float32)
+
+
+print(X)
+
+
+model = tf.keras.models.Sequential([
+    tf.keras.layers.Dense(10, input_dim=2, activation='relu'),  # 첫 번째 은닉층
+    tf.keras.layers.Dense(5, activation='relu'),  # 두 번째 은닉층
+    tf.keras.layers.Dense(1, activation='relu')  # 출력 레이어
+])
+
+
+model.compile(loss = 'mean_squared_error', optimizer = 'adam')
+
+
+model.fit(X, Y, epochs = 300)
+
+
+
+from mpl_toolkits.mplot3d import Axes3D
+
+# 입력 데이터와 예측 데이터 준비
+temp = X[:, 0]  # 기온 데이터
+humid = X[:, 1]  # 습도 데이터
+predictions = model.predict(X).flatten()  # 모델을 사용하여 예측
+
+# 3D 그래프 생성
+fig = plt.figure(figsize=(10, 8))
+ax = fig.add_subplot(111, projection='3d')
+
+# 실제 판매량을 3D 산점도로 표시
+ax.scatter(temp, humid, Y, color='b', label='Actual Sales', alpha=0.5)
+
+# 예측 판매량을 3D 산점도로 표시
+ax.scatter(temp, humid, predictions, color='r', label='Predicted Sales', alpha=0.5)
+
+# 축 이름 및 그래프 타이틀 설정
+ax.set_xlabel('Temperature')
+ax.set_ylabel('Humidity')
+ax.set_zlabel('Ice Cream Sales')
+ax.set_title('3D Plot of Ice Cream Sales Prediction')
+
+# 범례 추가
+ax.legend()
+
+# 그래프 표시
+plt.show()
+
+
+
+# 예측하고자 하는 기온과 습도
+temperature = 45
+humidity = 70
+
+# 모델 입력을 위한 배열 생성
+input_data = np.array([[temperature, humidity]])
+
+# 모델 예측
+predicted_sales = model.predict(input_data)
+
+# 예측 결과 출력
+print(" Temperature:", temperature, "and Humidity:", humidity, "is:", predicted_sales[0][0])
