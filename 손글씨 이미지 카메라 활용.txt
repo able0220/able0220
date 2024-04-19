@@ -1,0 +1,137 @@
+
+import tensorflow as tf
+import numpy as np
+import matplotlib.pyplot as plt
+from tensorflow.keras import datasets, layers, models
+
+
+
+mnist = tf.keras.datasets.mnist
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+
+
+x_train.shape
+
+
+plt.imshow(x_train[0])
+plt.colorbar()
+plt.show
+
+
+
+x_train, x_test = x_train / 255.0, x_test / 255.0
+
+
+plt.imshow(x_train[0])
+plt.colorbar()
+plt.show
+
+
+
+
+model = models.Sequential()
+model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+
+
+model.add(layers.Flatten())
+model.add(layers.Dense(64, activation='relu'))
+model.add(layers.Dense(10, activation='softmax'))
+
+
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+
+model.fit(x_train, y_train, epochs=5)
+
+
+model.evaluate(x_test,  y_test, verbose=2)
+
+prediction = model.predict(x_test)
+
+
+from IPython.display import display, Javascript
+from google.colab.output import eval_js
+from base64 import b64decode
+
+def take_photo(filename='photo.jpg', quality=0.8):
+  js = Javascript('''
+    async function takePhoto(quality) {
+      const div = document.createElement('div');
+      const capture = document.createElement('button');
+      capture.textContent = 'Capture';
+      div.appendChild(capture);
+
+      const video = document.createElement('video');
+      video.style.display = 'block';
+      const stream = await navigator.mediaDevices.getUserMedia({video: true});
+
+      document.body.appendChild(div);
+      div.appendChild(video);
+      video.srcObject = stream;
+      await video.play();
+
+      // Resize the output to fit the video element.
+      google.colab.output.setIframeHeight(document.documentElement.scrollHeight, true);
+
+      // Wait for Capture to be clicked.
+      await new Promise((resolve) => capture.onclick = resolve);
+
+      const canvas = document.createElement('canvas');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      canvas.getContext('2d').drawImage(video, 0, 0);
+      stream.getVideoTracks()[0].stop();
+      div.remove();
+      return canvas.toDataURL('image/jpeg', quality);
+    }
+    ''')
+  display(js)
+  data = eval_js('takePhoto({})'.format(quality))
+  binary = b64decode(data.split(',')[1])
+  with open(filename, 'wb') as f:
+    f.write(binary)
+  return filename
+
+
+
+from IPython.display import Image
+try:
+  filename = take_photo()
+  print('Saved to {}'.format(filename))
+
+  # Show the image which was just taken.
+  display(Image(filename))
+except Exception as err:
+  # Errors will be thrown if the user does not have a webcam or if they do not
+  # grant the page permission to access it.
+  print(str(err))
+
+
+ path = 'photo.jpg'
+
+import cv2
+import numpy as np
+from PIL import Image
+import matplotlib.pyplot as plt
+
+# 업로드된 이미지를 읽어와 전처리
+image = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
+image = cv2.resize(image, (28, 28))  # 이미지 크기 조정
+image = np.invert(np.array([image]))  # 색상 반전 및 배열 변환
+image = image / 255.0  # 정규화
+
+# 이미지 시각화
+plt.imshow(image[0], cmap='gray')
+plt.show()
+
+
+
+prediction = model.predict(image.reshape(1, 28, 28, 1))  # 모델 입력에 맞게 차원 조정
+predicted_digit = np.argmax(prediction)  # 가장 높은 확률을 가진 클래스 선택
+print('Predicted Digit:', predicted_digit)
