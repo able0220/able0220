@@ -77,6 +77,53 @@ plt.show()
 
 
 
+
+
+
+from mpl_toolkits.mplot3d import Axes3D
+
+# 각도 리스트 설정
+azims = [10, 90, 180, 270]
+
+# 그래프 초기화
+fig = plt.figure(figsize=(20, 10))
+
+for i, azim in enumerate(azims):
+    ax = fig.add_subplot(2, 2, i + 1, projection='3d')  # 2x2 그리드에서 서브플롯 생성
+
+    # 데이터 표시
+    ax.scatter(X[:, 0], X[:, 1], Y, color='blue', label='Actual Sales', alpha=0.5)
+    ax.scatter(X[:, 0], X[:, 1], predictions.flatten(), color='red', label='Predicted Sales', alpha=0.5)
+
+    # 축 설정
+    ax.set_xlabel('Temperature')
+    ax.set_ylabel('Humidity')
+    ax.set_zlabel('Ice Cream Sales')
+
+    # 시점 설정 (고도는 30으로 고정, 방위는 변화)
+    ax.view_init(elev=30, azim=azim)
+
+    # 타이틀 설정
+    ax.set_title(f'3D Plot of Ice Cream Sales Prediction - Azim: {azim}')
+
+    # 범례 추가
+    ax.legend()
+
+# 전체 그래프 표시
+plt.tight_layout()  # 그래프 간 간격 자동 조정
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
 # 예측하고자 하는 기온과 습도
 temperature = 45
 humidity = 70
