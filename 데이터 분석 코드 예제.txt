@@ -1,0 +1,27 @@
+import pandas as pd
+import tensorflow as tf
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.load_dataset("mpg")
+
+df = sns.load_dataset("mpg")
+
+df.isnull().sum()
+df.dropna()
+
+_ = df.hist(figsize= (10,8))
+
+
+sns.displot(data = df , x= "mpg")
+
+sns.displot(data = df , x = "mpg" , kde = True, rug = True)
+
+sns.kdeplot(data = df , x = "mpg")
+
+sns.scatterplot(data = df , x = "weight" , y="mpg" , hue = "origin")
+
+sns.scatterplot(data = df , x = "acceleration" , y="mpg" , hue = "origin")
+
+sns.scatterplot(data = df , x = "horsepower" , y="mpg" , hue = "origin")
