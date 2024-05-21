@@ -10,6 +10,9 @@ plt.rcParams['font.family'] = 'NanumGothic'
 import seaborn as sns
 
 
+from google.colab import files
+apple = files.upload()
+
 import csv
 f= open('AAPL.csv', encoding = 'euc-kr')
 data = pd.read_csv(f)
