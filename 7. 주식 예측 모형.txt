@@ -53,40 +53,7 @@ y_train, y_test = y[:split], y[split:]
 
 
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dense, Dropout
-
-model = Sequential([
-    LSTM(50, return_sequences=True, input_shape=(sequence_length, 1)),
-    Dropout(0.2),
-    LSTM(50),
-    Dropout(0.2),
-    Dense(1)
-])
-model.compile(optimizer='adam', loss='mean_squared_error')
-
-
-
-
-# 모델 훈련
-model.fit(x_train, y_train, epochs=30, batch_size=32)
-
-
-
-import matplotlib.pyplot as plt
-
-predicted_stock_price = model.predict(x_test)
-predicted_stock_price = scaler.inverse_transform(predicted_stock_price)  # 예측 결과를 원래 스케일로 되돌림
-real_stock_price = scaler.inverse_transform(y_test.reshape(-1, 1))
-
-plt.plot(real_stock_price, color='red', label='Real Apple Stock Price')
-plt.plot(predicted_stock_price, color='blue', label='Predicted Apple Stock Price')
-plt.title('Apple Stock Price Prediction')
-plt.xlabel('Time')
-plt.ylabel('Price')
-plt.legend()
-plt.show()
-
-
+from tenso성
 # 'High'와 'Close' 선택 및 스케일링
 features = data[['High', 'Close']]
 scaler = MinMaxScaler(feature_range=(0, 1))
