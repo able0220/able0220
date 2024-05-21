@@ -10,9 +10,6 @@ plt.rcParams['font.family'] = 'NanumGothic'
 import seaborn as sns
 
 
-from google.colab import files
-apple = files.upload()
-
 import csv
 f= open('AAPL.csv', encoding = 'euc-kr')
 data = pd.read_csv(f)
@@ -53,32 +50,10 @@ y_train, y_test = y[:split], y[split:]
 
 
 from tensorflow.keras.models import Sequential
-from tenso성
-# 'High'와 'Close' 선택 및 스케일링
-features = data[['High', 'Close']]
-scaler = MinMaxScaler(feature_range=(0, 1))
-features_scaled = scaler.fit_transform(features)
-
-
-def create_sequences(features, sequence_length):
-    x, y = [], []
-    for i in range(len(features) - sequence_length - 1):
-        x.append(features[i:(i + sequence_length)])
-        y.append(features[i + sequence_length, 1])  # 'Close' 가격을 예측 대상으로 설정
-    return np.array(x), np.array(y)
-
-sequence_length = 50
-x, y = create_sequences(features_scaled, sequence_length)
-
-
-
-split = int(0.8 * len(x))
-x_train, x_test = x[:split], x[split:]
-y_train, y_test = y[:split], y[split:]
-
+from tensorflow.keras.layers import LSTM, Dense, Dropout
 
 model = Sequential([
-    LSTM(50, return_sequences=True, input_shape=(sequence_length, 2)),  # 입력 차원을 2로 설정
+    LSTM(50, return_sequences=True, input_shape=(sequence_length, 1)),
     Dropout(0.2),
     LSTM(50),
     Dropout(0.2),
@@ -87,9 +62,18 @@ model = Sequential([
 model.compile(optimizer='adam', loss='mean_squared_error')
 
 
+
+
+# 모델 훈련
+model.fit(x_train, y_train, epochs=30, batch_size=32)
+
+
+
+import matplotlib.pyplot as plt
+
 predicted_stock_price = model.predict(x_test)
-predicted_stock_price = scaler.inverse_transform(np.concatenate((np.zeros_like(predicted_stock_price), predicted_stock_price), axis=1))[:,1]  # 스케일 역변환
-real_stock_price = scaler.inverse_transform(np.concatenate((np.zeros_like(y_test.reshape(-1, 1)), y_test.reshape(-1, 1)), axis=1))[:,1]
+predicted_stock_price = scaler.inverse_transform(predicted_stock_price)  # 예측 결과를 원래 스케일로 되돌림
+real_stock_price = scaler.inverse_transform(y_test.reshape(-1, 1))
 
 plt.plot(real_stock_price, color='red', label='Real Apple Stock Price')
 plt.plot(predicted_stock_price, color='blue', label='Predicted Apple Stock Price')
@@ -98,6 +82,3 @@ plt.xlabel('Time')
 plt.ylabel('Price')
 plt.legend()
 plt.show()
-
-# 모델 훈련
-model.fit(x_train, y_train, epochs=30, batch_size=32)
