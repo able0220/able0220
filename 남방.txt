@@ -1,0 +1,110 @@
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import MinMaxScaler
+
+# 데이터 로드
+data = pd.read_csv('ENSO.csv', parse_dates=True, index_col='Date')
+print(data.head())
+
+
+
+data = data[['SOI', 'ONI']]  # SOI(Southern Oscillation Index), ONI(Oceanic Niño Index) 선택
+data = data.dropna()
+
+
+
+# 필요한 데이터 열 선택 및 정규화
+scaler = MinMaxScaler(feature_range=(0, 1))
+data_scaled = scaler.fit_transform(data)
+
+# 데이터 시퀀스 생성 함수
+def create_sequences(data, sequence_length):
+    x, y = [], []
+    for i in range(len(data) - sequence_length):
+        x.append(data[i:i+sequence_length])
+        y.append(data[i+sequence_length, 1])  # ONI를 예측 대상으로 설정
+    return np.array(x), np.array(y)
+
+sequence_length = 12  # 12개월 데이터로 다음 달의 ONI 예측
+x, y = create_sequences(data_scaled, sequence_length)
+x = np.reshape(x, (x.shape[0], x.shape[1], 2))  # 2개 특성을 가진 시퀀스 데이터
+
+
+
+print(data)
+
+
+print(np.isinf(data).sum())
+data.replace([np.inf, -np.inf], np.nan, inplace=True)  # 무한대 값을 NaN으로 대체
+data.dropna(inplace=True)  # NaN 제거
+
+
+
+
+
+# 데이터 분할
+split = int(0.8 * len(x))
+x_train, x_test = x[:split], x[split:]
+y_train, y_test = y[:split], y[split:]
+
+
+
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import LSTM, Dense, Dropout
+
+# LSTM 모델 구축
+model = Sequential([
+    LSTM(50, input_shape=(sequence_length, 2), return_sequences=True),
+    Dropout(0.2),
+    LSTM(50, return_sequences=False),
+    Dropout(0.2),
+    Dense(1)
+])
+model.compile(optimizer='adam', loss='mean_squared_error')
+
+# 모델 훈련
+model.fit(x_train, y_train, epochs=50, batch_size=32, validation_split=0.1)
+
+
+
+
+import matplotlib.pyplot as plt
+
+# 예측
+predicted_oni = model.predict(x_test)
+predicted_oni = scaler.inverse_transform(np.concatenate((np.zeros_like(predicted_oni), predicted_oni), axis=1))[:,1]  # 스케일 역변환
+
+# 실제 값 스케일 역변환
+real_oni = scaler.inverse_transform(np.concatenate((np.zeros_like(y_test.reshape(-1, 1)), y_test.reshape(-1, 1)), axis=1))[:,1]
+
+# 결과 시각화
+plt.figure(figsize=(10, 6))
+plt.plot(real_oni, label='Actual ONI', color='blue')
+plt.plot(predicted_oni, label='Predicted ONI', color='red')
+plt.title('ONI Prediction')
+plt.xlabel('Months')
+plt.ylabel('ONI Value')
+plt.legend()
+plt.show()
+
+
+
+
+def predict_future(model, last_sequence, n_future, scaler):
+    future_predictions = []
+    current_sequence = last_sequence
+    for _ in range(n_future):
+        next_value = model.predict(current_sequence[np.newaxis, :, :])
+        future_predictions.append(next_value.flatten()[0])
+        current_sequence = np.roll(current_sequence, -1)
+        current_sequence[-1] = next_value
+
+    # 스케일 역변환을 위해 적절한 형태의 배열 생성
+    dummy_features = np.zeros((len(future_predictions), 1))  # 첫 번째 특성을 위한 더미 데이터
+    predictions_with_dummy = np.hstack((dummy_features, np.array(future_predictions).reshape(-1, 1)))
+    return scaler.inverse_transform(predictions_with_dummy)[:, 1]  # 두 번째 열이 실제 예측 값
+
+# 미래 예측 실행
+last_sequence = x[-1]
+future_oni = predict_future(model, last_sequence, 3, scaler)
+print("Future ONI predictions:", future_oni)
