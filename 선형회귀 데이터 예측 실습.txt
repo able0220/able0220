@@ -1,0 +1,71 @@
+import tensorflow as tf
+import numpy as np
+import matplotlib.pyplot as plt
+
+# x_data 에 입력 값 y_data 출력값을 입력 총 갯수가 맞아야 함
+x_data = [1,2,3,4,5,6,7,8,9,10]
+y_data = [436455, 435435, 406243, 357771, 326822, 302676, 272337, 260562, 249189, 230000]
+
+
+
+# 데이터 정규화 함수(데이터가 많은 경우 기울기 손실이 생김)
+def normalize_data(data):
+    return (data - np.mean(data)) / np.std(data)
+# 데이터 정규화
+x_data = normalize_data(x_data)
+y_data = normalize_data(y_data)
+
+
+
+# 화면 출력  x축은 x_data, y축은 y_data
+plt.plot(x_data, y_data, 'bo')
+plt.legend()
+plt.show()
+
+
+#인공지능 기본 설정
+model = tf.keras.models.Sequential([
+    tf.keras.layers.Dense(10, input_dim=1),
+    tf.keras.layers.Dense(1)
+])
+#평균 제곱 오차, 최적화 함수 adam
+model.compile(loss='mean_squared_error', optimizer='adam')
+
+
+
+
+#학습 값
+model.fit(x_data,y_data, epochs=300)
+
+
+#모델 그래프 예측값
+plt.plot(x_data, y_data, 'bo')
+plt.plot(x_data, model.predict(x_data), 'Red')
+plt.legend()
+plt.show()
+
+
+
+# 새로운 데이터 정규화
+def normalize_new_data(x, old_data):
+    return (x - np.mean(old_data)) / np.std(old_data)
+
+# 기존 x_data에 사용된 값을 이용하여 11 정규화
+normalized_new_x = normalize_new_data(11, [1,2,3,4,5,6,7,8,9,10])
+
+# 예측
+prediction = model.predict([normalized_new_x])
+
+# 결과 출력
+print(f"정규화 이전의 예측 값 {prediction}")
+
+
+# 역정규화 함수
+def denormalize_data(normalized_data, original_data):
+    return normalized_data * np.std(original_data) + np.mean(original_data)
+
+# 원래 y 데이터를 이용해 예측값 역정규화
+denormalized_prediction = denormalize_data(prediction, [436455, 435435, 406243, 357771, 326822, 302676, 272337, 260562, 249189, 230000])
+
+# 결과 출력
+print(f" 정규화 이전의 값 {denormalized_prediction}")
