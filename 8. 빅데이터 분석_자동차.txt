@@ -1,0 +1,76 @@
+# 1번째 복사 구역
+import pandas as pd
+url = 'https://raw.githubusercontent.com/able0220/able0220/main/Cars%20Data.csv' # 에이블 github 자료에 내용 추가
+data = pd.read_csv(url)
+print(data.head())  # 데이터의 처음 몇 줄을 출력하여 확인
+
+
+#2번째 복사 구역
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+#3번째 복사 구역
+data.isnull().sum()  # 결측치(비어 있는 데이터가 있는지 확인)
+
+#4번째 복사 구역
+data.dropna()   #해당 결측치 값이 존재 하는 행 삭제
+
+
+#5번째 복사 구역
+data = data.dropna() #data 저장공간에 결측치 제거된 데이터로 갱신
+
+#6번째 복사 구역
+_ = data.hist(figsize= (10,8)) # 전체 그래프로 대략적으로 표현
+
+
+#7번째 복사 구역
+data['Invoice'] = data['Invoice'].replace('[\$,]', '', regex=True).astype(float) #금액 통화 기호 제거 -> 일반 숫자로 전환
+
+
+#8번째 복사 구역
+sns.displot(data = data , x= "Invoice", y= 'MPG_City') # 가격 대비 연비 상관관계
+
+#9번째 복사 구역
+sns.displot(data = data , x= "Invoice")  #가격 분포도
+
+
+#10번째 복사 구역
+sns.barplot(x='Horsepower', y='MPG_City', data=data, palette='viridis') #x 축에 출력, y축 도시 연비
+
+
+# 11번째 복사 구역
+# Horsepower를 100단위로 그룹화
+bins = np.arange(100, data['Horsepower'].max() + 100, 100)  # 최대값 이상이 포함되도록 조정
+data['Horsepower_Group'] = pd.cut(data['Horsepower'], bins=bins, right=False)
+# 그룹별 평균 MPG_City 계산
+grouped_data = data.groupby('Horsepower_Group')['MPG_City'].mean().reset_index()
+sns.barplot(x='Horsepower_Group', y='MPG_City', data=grouped_data, palette='viridis')
+#평균을 이용한 그래프 출력
+
+
+# 11번째 복사 구역
+sns.histplot(data['Horsepower'], kde=True, color='blue') # 분포 시각화 예시 Horsepower
+
+
+# 12번째 복사 구역
+sns.scatterplot(x='Horsepower', y='Weight', data=data) # 관계 시각화 산점도 표현(원에 해당하는 정보는 찾기 힘듬)
+
+
+# 13번째 복사 구역
+import plotly.express as px # 고급 라이브러리 기능
+# Plotly 산점도 생성
+fig = px.scatter(data, x='Horsepower', y='Invoice',
+                 hover_data=['Model'],  # 점 좌표에 따라 해당 정보의 모델 이름 표시
+                )
+# 그래프 표시
+fig.show()
+
+
+
+# 14번째 복사 구역
+# 산점도 그리기+ 데이터 끼리 묶음으로 표현
+plt.figure(figsize=(10, 6))
+scatter = sns.scatterplot(x='Horsepower', y='MPG_City', data=data, hue='Origin', palette='Set1', style='Origin', s=100)
+plt.grid(True)
+plt.show()
