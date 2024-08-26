@@ -1,0 +1,280 @@
+!pip install biopython
+
+
+# 2. 필요한 모듈 임포트
+from Bio import Entrez, SeqIO
+
+# 3. NCBI에서 데이터를 가져오기 위해 이메일 설정 (NCBI 정책 상 필요)
+Entrez.email = "gaonnuri0902@naver.com"  # 여기서 본인의 이메일로 바꾸세요
+
+# 4. 헤모글로빈 유전자(또는 단백질) 서열 가져오기
+# 예를 들어, 헤모글로빈 알파(hemoglobin alpha) 유전자를 검색하고 가져옵니다.
+handle = Entrez.efetch(db="nucleotide", rettype="fasta", retmode="text", id="NM_000558.5")
+record = SeqIO.read(handle, "fasta")
+handle.close()
+
+# 5. 서열 데이터 출력
+print(f"ID: {record.id}")
+print(f"Description: {record.description}")
+print(f"Sequence Length: {len(record.seq)}")
+print(f"Sequence: {record.seq}")
+
+# 6. 염기 조성 분석 및 시각화
+from matplotlib import pyplot as plt
+
+sequence = str(record.seq)  # FASTA 파일에서 읽은 서열 데이터를 문자열로 변환
+nucleotides = ['A', 'T', 'C', 'G']
+counts = [sequence.count(nuc) for nuc in nucleotides]
+
+# 시각화 (막대 그래프)
+plt.figure(figsize=(10, 6))
+plt.bar(nucleotides, counts, color=['green', 'blue', 'orange', 'red'])
+plt.title(f"Base Composition of {record.id} (Length: {len(sequence)} bp)")
+plt.xlabel("Nucleotide")
+plt.ylabel("Count")
+plt.ylim(0, max(counts) + 1)
+
+# 그래프 출력
+plt.show()
+
+
+
+
+# 4. 인슐린 유전자 서열 가져오기
+# 인슐린 유전자(INS)를 검색하고 가져옵니다.
+handle = Entrez.efetch(db="nucleotide", rettype="fasta", retmode="text", id="NM_000207.3")
+record = SeqIO.read(handle, "fasta")
+handle.close()
+
+# 5. 서열 데이터 출력
+print(f"ID: {record.id}")
+print(f"Description: {record.description}")
+print(f"Sequence Length: {len(record.seq)}")
+print(f"Sequence: {record.seq}")
+
+# 6. 염기 조성 분석 및 시각화
+from matplotlib import pyplot as plt
+
+sequence = str(record.seq)  # FASTA 파일에서 읽은 서열 데이터를 문자열로 변환
+nucleotides = ['A', 'T', 'C', 'G']
+counts = [sequence.count(nuc) for nuc in nucleotides]
+
+# 시각화 (막대 그래프)
+plt.figure(figsize=(10, 6))
+plt.bar(nucleotides, counts, color=['green', 'blue', 'orange', 'red'])
+plt.title(f"Base Composition of {record.id} (Length: {len(sequence)} bp)")
+plt.xlabel("Nucleotide")
+plt.ylabel("Count")
+plt.ylim(0, max(counts) + 1)
+
+# 그래프 출력
+plt.show()
+
+
+!pip install py3Dmol
+
+
+import py3Dmol
+
+# 3. PDB ID를 사용하여 인슐린의 3D 구조 시각화
+pdb_id = "1ZNI"  # 인슐린의 PDB ID
+
+# PDB 형식의 구조 데이터를 불러와 3D 모델 생성
+view = py3Dmol.view(query=f'pdb:{pdb_id}')
+view.setStyle({'cartoon': {'color': 'spectrum'}})  # 스타일 설정
+view.zoomTo()  # 모델에 줌
+view.show()  # 모델 표시
+
+
+
+
+
+# PDB ID를 사용하여 인슐린의 3D 구조 시각화 (1ZNI 예시)
+pdb_id = "1A3N"
+
+# PDB 형식의 구조 데이터를 불러와 3D 모델 생성
+view = py3Dmol.view(query=f'pdb:{pdb_id}')
+view.setStyle({'cartoon': {'color': 'spectrum'}})  # 스타일 설정
+view.zoomTo()  # 모델에 줌
+view.show()  # 모델 표시
+
+
+
+
+
+#PCR 시뮬레이션
+
+from Bio.Seq import Seq
+from Bio.SeqUtils import seq3
+
+# 1. 기본 DNA 서열 설정
+original_dna_seq = Seq("ATGCGA")  # 증폭할 DNA 서열
+
+# 2. PCR 증폭 시뮬레이션: 특정 서열을 반복
+repeat_count = 5  # 서열을 몇 번 반복할지 설정
+amplified_dna_seq = original_dna_seq * repeat_count
+
+# 증폭된 서열 출력
+print(f"Original DNA Sequence: {original_dna_seq}")
+print(f"Amplified DNA Sequence: {amplified_dna_seq}")
+
+# 3. 증폭된 DNA 서열을 단백질 서열로 번역
+amplified_protein_seq = amplified_dna_seq.translate()
+
+# 번역된 단백질 서열 출력
+print(f"Translated Protein Sequence: {amplified_protein_seq}")
+
+# 4. 결과 분석: 원래 서열과 증폭된 서열, 번역된 단백질 서열을 비교
+print(f"Original DNA: {original_dna_seq}")
+print(f"Original Protein: {seq3(original_dna_seq.translate())}")
+print(f"Amplified DNA: {amplified_dna_seq}")
+print(f"Amplified Protein: {seq3(amplified_protein_seq)}")
+
+
+
+
+#PCE 인슐린 데이터 시뮬레이션
+# 1. NCBI에서 인슐린 유전자 서열 가져오기
+Entrez.email = "your_email@example.com"  # NCBI 정책 상 이메일 설정 필요
+handle = Entrez.efetch(db="nucleotide", rettype="fasta", retmode="text", id="NM_000207.3")
+record = SeqIO.read(handle, "fasta")
+handle.close()
+
+# 2. 서열 데이터 출력
+print(f"ID: {record.id}")
+print(f"Description: {record.description}")
+print(f"Sequence Length: {len(record.seq)}")
+print(f"Sequence: {record.seq}")
+
+# 3. 특정 부분을 선택하여 증폭 (예: 첫 6개의 염기)
+target_seq = record.seq[0:6]  # 인슐린 유전자 서열에서 특정 부위 선택
+
+# 4. PCR 증폭 시뮬레이션: 특정 서열을 반복
+repeat_count = 5  # 서열을 몇 번 반복할지 설정
+amplified_dna_seq = target_seq * repeat_count
+
+# 증폭된 서열 출력
+print(f"\nOriginal Target DNA Sequence: {target_seq}")
+print(f"Amplified DNA Sequence: {amplified_dna_seq}")
+
+# 5. 증폭된 DNA 서열을 단백질 서열로 번역
+amplified_protein_seq = amplified_dna_seq.translate()
+
+# 번역된 단백질 서열 출력
+print(f"Translated Protein Sequence: {amplified_protein_seq}")
+
+# 6. 결과 분석: 원래 서열과 증폭된 서열, 번역된 단백질 서열을 비교
+print(f"\nOriginal Target DNA: {target_seq}")
+print(f"Original Target Protein: {seq3(target_seq.translate())}")
+print(f"Amplified DNA: {amplified_dna_seq}")
+print(f"Amplified Protein: {seq3(amplified_protein_seq)}")
+
+
+
+
+
+from Bio.Seq import Seq
+from Bio.SeqUtils import seq3
+
+# 1. 문자와 대응하는 아미노산 및 코돈 설정 (필요한 문자를 모두 추가)
+codon_map = {
+    'A': 'GCT',  # Alanine
+    'B': 'AAT',  # Asparagine (임의의 할당)
+    'C': 'TGC',  # Cysteine
+    'D': 'GAT',  # Aspartic Acid
+    'E': 'GAG',  # Glutamic Acid
+    'F': 'TTT',  # Phenylalanine
+    'G': 'GGT',  # Glycine
+    'H': 'CAT',  # Histidine
+    'I': 'ATA',  # Isoleucine
+    'J': 'ATC',  # Isoleucine (J는 일반적으로 사용되지 않지만, I와 동일하게 처리)
+    'K': 'AAA',  # Lysine
+    'L': 'CTG',  # Leucine
+    'M': 'ATG',  # Methionine
+    'N': 'AAC',  # Asparagine
+    'O': 'CCG',  # Proline (임의의 할당)
+    'P': 'CCT',  # Proline
+    'Q': 'CAA',  # Glutamine
+    'R': 'CGT',  # Arginine
+    'S': 'AGT',  # Serine
+    'T': 'ACC',  # Threonine
+    'U': 'TGA',  # Stop codon (U는 일반적으로 사용되지 않지만, 여기서 TGA를 사용)
+    'V': 'GTT',  # Valine
+    'W': 'TGG',  # Tryptophan
+    'X': 'TAA',  # Stop codon (X는 stop codon을 나타냄)
+    'Y': 'TAC',  # Tyrosine
+    'Z': 'GAA',  # Glutamic Acid (임의의 할당)
+    ' ': 'TAA',  # Stop codon to represent space
+}
+
+# 코돈에서 문자로 역변환하기 위한 사전 생성
+reverse_codon_map = {v: k for k, v in codon_map.items()}
+
+# 2. 예시 단백질 서열
+protein_sequence = "LEEYOUNGJIN"
+
+# 3. 단백질 서열을 DNA 염기서열로 변환
+dna_sequence = "".join(codon_map[char] for char in protein_sequence)
+print(f"DNA Sequence from protein '{protein_sequence}': {dna_sequence}")
+
+
+
+
+from Bio.Seq import Seq
+
+# 문자와 대응하는 아미노산 및 코돈 설정 (필요한 문자를 모두 추가)
+codon_map = {
+    'A': 'GCT',  # Alanine
+    'B': 'AAT',  # Asparagine (임의의 할당)
+    'C': 'TGC',  # Cysteine
+    'D': 'GAT',  # Aspartic Acid
+    'E': 'GAG',  # Glutamic Acid
+    'F': 'TTT',  # Phenylalanine
+    'G': 'GGT',  # Glycine
+    'H': 'CAT',  # Histidine
+    'I': 'ATA',  # Isoleucine
+    'J': 'ATC',  # Isoleucine (J는 일반적으로 사용되지 않지만, I와 동일하게 처리)
+    'K': 'AAA',  # Lysine
+    'L': 'CTG',  # Leucine
+    'M': 'ATG',  # Methionine
+    'N': 'AAC',  # Asparagine
+    'O': 'CCG',  # Proline (임의의 할당)
+    'P': 'CCT',  # Proline
+    'Q': 'CAA',  # Glutamine
+    'R': 'CGT',  # Arginine
+    'S': 'AGT',  # Serine
+    'T': 'ACC',  # Threonine
+    'U': 'TGA',  # Stop codon (U는 일반적으로 사용되지 않지만, 여기서 TGA를 사용)
+    'V': 'GTT',  # Valine
+    'W': 'TGG',  # Tryptophan
+    'X': 'TAA',  # Stop codon (X는 stop codon을 나타냄)
+    'Y': 'TAC',  # Tyrosine
+    'Z': 'GAA',  # Glutamic Acid (임의의 할당)
+    ' ': 'TAA',  # Stop codon to represent space
+}
+
+# 코돈에서 문자로 역변환하기 위한 사전 생성
+reverse_codon_map = {v: k for k, v in codon_map.items()}
+
+def translate_dna_to_text(dna_sequence):
+    # 1. DNA 염기서열을 코돈 단위로 나누기
+    codons = [dna_sequence[i:i+3] for i in range(0, len(dna_sequence), 3)]
+    
+    # 2. 각 코돈을 문자로 변환 (코돈이 3개 염기로 완성된 경우에만 변환)
+    text = ""
+    for codon in codons:
+        if len(codon) == 3:
+            if codon in reverse_codon_map:
+                text += reverse_codon_map[codon]
+            else:
+                text += '?'  # 알 수 없는 코돈 처리 (에러 방지용)
+        else:
+            text += '?'  # 불완전한 코돈 처리 (에러 방지용)
+    
+    return text
+
+# 사용자로부터 DNA 염기서열 입력받기
+user_input = input("Enter a DNA sequence (multiple of 3 nucleotides): ").upper()
+translated_text = translate_dna_to_text(user_input)
+print(f"Translated text: {translated_text}")
+
