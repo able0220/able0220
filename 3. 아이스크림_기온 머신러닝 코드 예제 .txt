@@ -1,35 +1,43 @@
+#파일 업로드
 from google.colab import files
 icec = files.upload()
 
+#필요 라이브러리 선언
 import csv
-f= open('iceweather.csv', encoding = 'euc-kr')
-data = csv.reader(f)
-temp=[]
-ice=[]
-
-
-for row in data:
-    temp.append(float(row[1]))
-    ice.append(float(row[4]))
-    
-print(temp)
-
 import matplotlib.pyplot as plt
 import tensorflow as tf
 
+# 데이터 저장공간 제작
+temp = []
+ice = []
 
+with open('iceweather.csv', encoding='utf-8') as f:
+    data = csv.reader(f)
+    next(data)  # 헤더 건너뛰기
+    for row in data:
+        temp.append(float(row[1]))  # 평균기온
+        ice.append(float(row[4]))   # 아이스크림 판매량
+
+# 리스트를 numpy 배열로 변환
+import numpy as np
+temp = np.array(temp)
+ice = np.array(ice)
+
+
+#모델 정의
 model = tf.keras.models.Sequential([
                   tf.keras.layers.Dense(5, input_dim = 1),
                   tf.keras.layers.Dense(3),
                   tf.keras.layers.Dense(1),
 ])
-
 model.compile(loss = 'mean_squared_error', optimizer = 'adam')
 
+#학습 시작
+model.fit(temp, ice, epochs = 500)
 
-model.fit(temp, ice, epochs = 1000)
 
 
+#그래프 출력
 plt.plot(temp,ice,'bx')
 plt.plot(temp,model.predict(temp),'Red')
 plt.legend()
