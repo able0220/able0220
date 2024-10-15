@@ -1,0 +1,47 @@
+import pandas as pd
+
+# GitHub URL로 CSV 데이터 불러오기
+url = 'https://raw.githubusercontent.com/able0220/able0220/refs/heads/main/iceweather.csv'
+data = pd.read_csv(url, encoding='utf-8')  # 필요한 경우 인코딩 설정
+
+# temp와 ice 리스트에 필요한 데이터 추가
+temp = []
+ice = []
+
+for row in data.itertuples():
+    temp.append(float(row[2]))  # '평균기온' 열에 해당
+    ice.append(float(row[5]))   # '아이스크림 판매량' 열에 해당
+
+print(temp[:5])  # 처음 몇 개 확인
+print(ice[:5])
+
+
+
+
+# 리스트를 numpy 배열로 변환
+
+import numpy as np
+temp = np.array(temp)
+ice = np.array(ice)
+
+
+# 텐서플로 모델 정의
+model = tf.keras.models.Sequential([
+    tf.keras.layers.Dense(5, input_dim=1),
+    tf.keras.layers.Dense(3),
+    tf.keras.layers.Dense(1),
+])
+model.compile(loss='mean_squared_error', optimizer='adam')
+
+
+
+
+# 모델 학습
+model.fit(temp, ice, epochs=50)
+
+
+#그래프 출력
+plt.plot(temp,ice,'bx')
+plt.plot(temp,model.predict(temp),'Red')
+plt.legend()
+plt.show()
