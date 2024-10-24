@@ -1,0 +1,92 @@
+#1번 실행 구간 데이터 로드
+
+import pandas as pd
+
+# 파일의 Raw URL 사용
+url = 'https://raw.githubusercontent.com/able0220/able0220/main/%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%95%88%EC%96%91%EC%8B%9C_%ED%96%89%EC%A0%95%EB%8F%99%EB%B3%84%20%EC%A3%BC%EB%AF%BC%EB%93%B1%EB%A1%9D%20%EC%9D%B8%EA%B5%AC%20%EB%B0%8F%20%EC%84%B8%EB%8C%80%ED%98%84%ED%99%A9_EN.csv'
+
+# UTF-8 인코딩으로 데이터 불러오기
+data = pd.read_csv(url, encoding='utf-8')
+
+# 데이터의 처음 몇 줄 출력
+print(data.head())
+
+
+
+#2번째 복사 구역 시각화를 위한 로드
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+
+# 'sans-serif' 대신 'DejaVu Sans' 폰트로 설정
+plt.rcParams['font.family'] = 'DejaVu Sans'
+
+
+#3번째
+# 전체 인구 분포 (총인구수)
+sns.histplot(data['Total Population'], kde=True)
+
+
+#4번째
+# 전체 인구 분포 (총인구수)
+sns.histplot(data['Total Population'], kde=True)
+
+
+
+
+#5번째
+# 남녀 성비 분포
+sns.histplot(data['Gender Ratio (Male to Female Ratio)'], kde=True)
+
+
+
+#6번째
+# 남자 인구 기준으로 데이터 정렬
+male_population_sorted = data[['Administrative District Name', 'Male Population']].sort_values(by='Male Population', ascending=False)
+
+# Seaborn의 barplot을 사용하여 막대 그래프 그리기
+plt.figure(figsize=(12, 8))
+sns.barplot(x='Male Population', y='Administrative District Name', data=male_population_sorted, palette='Blues_d')
+plt.title('Male Population by Administrative District (Sorted)', fontsize=14)
+plt.xlabel('Male Population')
+plt.ylabel('Administrative District Name')
+plt.show()
+
+
+
+#7번째
+# 여자 인구 기준으로 데이터 정렬
+female_population_sorted = data[['Administrative District Name', 'Female Population']].sort_values(by='Female Population', ascending=False)
+
+# Seaborn의 barplot을 사용하여 막대 그래프 그리기
+plt.figure(figsize=(12, 8))
+sns.barplot(x='Female Population', y='Administrative District Name', data=female_population_sorted, palette='Reds_d')
+plt.title('Female Population by Administrative District (Sorted)', fontsize=14)
+plt.xlabel('Female Population')
+plt.ylabel('Administrative District Name')
+plt.show()
+
+
+
+#8번째
+# 세대당 인구수와 총인구수 간의 관계 시각화
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x='Total Population', y='Population per Household', data=data, hue='Administrative District Name', palette='viridis', s=100)
+plt.title('Relationship between Total Population and Population per Household', fontsize=14)
+plt.xlabel('Total Population')
+plt.ylabel('Population per Household')
+plt.legend(loc='upper right', bbox_to_anchor=(1.15, 1))
+plt.show()
+
+
+#9번째
+
+# 남녀 성비와 총인구수 간의 관계 시각화
+plt.figure(figsize=(10, 6))
+sns.scatterplot(x='Total Population', y='Gender Ratio (Male to Female Ratio)', data=data, hue='Administrative District Name', palette='Spectral', s=100)
+plt.title('Relationship between Total Population and Gender Ratio', fontsize=14)
+plt.xlabel('Total Population')
+plt.ylabel('Gender Ratio (Male to Female)')
+plt.legend(loc='upper right', bbox_to_anchor=(1.15, 1))
+plt.show()
