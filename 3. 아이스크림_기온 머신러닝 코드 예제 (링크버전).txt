@@ -39,7 +39,7 @@ model.compile(loss='mean_squared_error', optimizer='adam')
 # 모델 학습
 model.fit(temp, ice, epochs=50)
 
-
+import matplotlib.pyplot as plt
 #그래프 출력
 plt.plot(temp,ice,'bx')
 plt.plot(temp,model.predict(temp),'Red')
