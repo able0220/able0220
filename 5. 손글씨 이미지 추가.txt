@@ -63,17 +63,20 @@ from google.colab import files
 test = files.upload()
 
 
-from PIL import Image
-import cv2
+file_name = list(test.keys())[0]  # "test1.png" 파일을 하나 업로드한다고 가정
+# 이미지 파일 읽기
+gray = cv2.imread(file_name, cv2.IMREAD_GRAYSCALE)
 
+# 이미지 표시
+plt.imshow(gray, cmap='gray')
+plt.show()
 
-gray = cv2.imread("test1.png", cv2.IMREAD_GRAYSCALE)
-plt.imshow(gray)
-
-
-gray = cv2.resize(255-gray, (28,28))
+# 모델에 맞게 이미지 전처리
+gray = cv2.resize(255 - gray, (28, 28))  # 반전시키고 크기 조정
 test_num = gray.flatten() / 255.0
-test_num = test_num.reshape((-1,28,28,1))
+test_num = test_num.reshape((-1, 28, 28))  # 모델 입력 형태에 맞게 재형성
 
 
-np.argmax(model.predict(test_num))
+predictions = model.predict(test_num)
+predicted_digit = np.argmax(predictions)
+print("예측된 숫자:", predicted_digit)
