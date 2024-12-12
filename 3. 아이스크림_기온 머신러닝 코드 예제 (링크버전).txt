@@ -24,7 +24,7 @@ import numpy as np
 temp = np.array(temp)
 ice = np.array(ice)
 
-
+import tensorflow as tf
 # 텐서플로 모델 정의
 model = tf.keras.models.Sequential([
     tf.keras.layers.Dense(5, input_dim=1),
