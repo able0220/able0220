@@ -1,6 +1,6 @@
 # 1번째 복사 구역
 import pandas as pd
-url = 'https://raw.githubusercontent.com/able0220/able0220/main/Cars%20Data.csv' # 에이블 github 자료에 내용 추가
+url = 'https://raw.githubusercontent.com/able0220/able0220/main/Cars%20Data1.csv' # 에이블 github 자료에 내용 추가
 data = pd.read_csv(url)
 print(data.head())  # 데이터의 처음 몇 줄을 출력하여 확인
 
