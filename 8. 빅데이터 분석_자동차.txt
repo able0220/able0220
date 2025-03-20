@@ -74,3 +74,44 @@ plt.figure(figsize=(10, 6))
 scatter = sns.scatterplot(x='Horsepower', y='MPG_City', data=data, hue='Origin', palette='Set1', style='Origin', s=100)
 plt.grid(True)
 plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+################################################################################################################################
+##최신 차량 관련 자료
+
+# 1번째 복사 구역
+import pandas as pd
+url = 'https://raw.githubusercontent.com/able0220/able0220/main/Cars%20Data_test.csv' # 에이블 github 자료에 내용 추가
+data = pd.read_csv(url)
+print(data.head())  # 데이터의 처음 몇 줄을 출력하여 확인
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+
+############################ 아래 내용 참고
+# 너무 높은 금액 제외 (상위 5% 초과 값 제거)
+threshold = df["Invoice"].quantile(0.95)  # 95% 이하만 유지, 숫자 변경에 따라 관련
+df_filtered = df[df["Invoice"] <= threshold]  # 필터링된 데이터
+
+# Plotly 산점도 생성 (필터링된 데이터)
+fig = px.scatter(
+    df_filtered, 
+    x='Horsepower', 
+    y='Invoice',
+    hover_data=['Model'],  # 모델 정보 표시
+    title="Horsepower vs Invoice Price Scatter Plot (Filtered)"
+)
+
+# 그래프 표시
+fig.show()
