@@ -98,6 +98,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+df= data
+import plotly.express as px # 고급 라이브러리 기능
 
 ############################ 아래 내용 참고
 # 너무 높은 금액 제외 (상위 5% 초과 값 제거)
