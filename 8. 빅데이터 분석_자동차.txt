@@ -97,21 +97,23 @@ print(data.head())  # 데이터의 처음 몇 줄을 출력하여 확인
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-
 df= data
 import plotly.express as px # 고급 라이브러리 기능
 
-############################ 아래 내용 참고
+
+
+
+####################################################### 아래 내용 참고
 # 너무 높은 금액 제외 (상위 5% 초과 값 제거)
-threshold = df["Invoice"].quantile(0.95)  # 95% 이하만 유지, 숫자 변경에 따라 관련
+threshold = df["Invoice"].quantile(0.90)  # 95% 이하만 유지, 숫자 변경에 따라 관련
 df_filtered = df[df["Invoice"] <= threshold]  # 필터링된 데이터
 
 # Plotly 산점도 생성 (필터링된 데이터)
 fig = px.scatter(
     df_filtered, 
-    x='Horsepower', 
+    x='KPL_City', 
     y='Invoice',
-    hover_data=['Model'],  # 모델 정보 표시
+    hover_data=['Model','Make'],  # 모델 정보 표시
     title="Horsepower vs Invoice Price Scatter Plot (Filtered)"
 )
 
