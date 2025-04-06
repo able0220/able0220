@@ -6,11 +6,6 @@ e = int (input("e : "))
 
 n = p * q
 tot = (p - 1) * (q - 1)
-#최대공약수 구하는 거
-def gcd(num1, num2):
-    while num2 != 0:
-        num1, num2 = num2, num1%num2
-    return num1
 
 #개인키
 def privatekey():
@@ -26,7 +21,7 @@ print("개인키(d) : {}".format(privatekey()))
 
 
 
-
+#암호화 된 숫자 원본으로 변환하기
 n = int (input("N 값 입력 : "))
 m = int (input("암호화된 숫자  입력 : "))
 d = int (input("복원값 d 값 입력 : "))
@@ -36,10 +31,11 @@ print("메시지 값 ", x%n)
 
 
 
+
+
+#메시지를 암호로 변경 하기
 n = int (input("n 값 입력 : "))
 e = int (input("공개키 e 값 입력 : "))
-
 m = int (input("원하는 숫자  : "))
-
 x = m**e
 print("암호화 된 숫자 ", x%n)
