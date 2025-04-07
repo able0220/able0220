@@ -7,6 +7,12 @@ e = int (input("e : "))
 n = p * q
 tot = (p - 1) * (q - 1)
 
+#최대공약수 구하는 거
+def gcd(num1, num2):
+    while num2 != 0:
+        num1, num2 = num2, num1%num2
+    return num1
+
 #개인키
 def privatekey():
     global e
