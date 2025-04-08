@@ -45,3 +45,130 @@ e = int (input("공개키 e 값 입력 : "))
 m = int (input("원하는 숫자  : "))
 x = m**e
 print("암호화 된 숫자 ", x%n)
+
+
+
+
+
+
+
+
+
+
+#########################################################
+!pip install biopython
+
+
+##################################################################################################
+from Bio.Seq import Seq
+from Bio.SeqUtils import seq3
+
+# 1. 문자와 대응하는 아미노산 및 코돈 설정 (필요한 문자를 모두 추가)
+codon_map = {
+    'A': 'GCT',  # Alanine
+    'B': 'AAT',  # Asparagine (임의의 할당)
+    'C': 'TGC',  # Cysteine
+    'D': 'GAT',  # Aspartic Acid
+    'E': 'GAG',  # Glutamic Acid
+    'F': 'TTT',  # Phenylalanine
+    'G': 'GGT',  # Glycine
+    'H': 'CAT',  # Histidine
+    'I': 'ATA',  # Isoleucine
+    'J': 'ATC',  # Isoleucine (J는 일반적으로 사용되지 않지만, I와 동일하게 처리)
+    'K': 'AAA',  # Lysine
+    'L': 'CTG',  # Leucine
+    'M': 'ATG',  # Methionine
+    'N': 'AAC',  # Asparagine
+    'O': 'CCG',  # Proline (임의의 할당)
+    'P': 'CCT',  # Proline
+    'Q': 'CAA',  # Glutamine
+    'R': 'CGT',  # Arginine
+    'S': 'AGT',  # Serine
+    'T': 'ACC',  # Threonine
+    'U': 'TGA',  # Stop codon (U는 일반적으로 사용되지 않지만, 여기서 TGA를 사용)
+    'V': 'GTT',  # Valine
+    'W': 'TGG',  # Tryptophan
+    'X': 'TAA',  # Stop codon (X는 stop codon을 나타냄)
+    'Y': 'TAC',  # Tyrosine
+    'Z': 'GAA',  # Glutamic Acid (임의의 할당)
+    ' ': 'TAA',  # Stop codon to represent space
+}
+
+# 코돈에서 문자로 역변환하기 위한 사전 생성
+reverse_codon_map = {v: k for k, v in codon_map.items()}
+
+# 2. 예시 단백질 서열
+protein_sequence = "LEEYOUNGJIN"
+
+# 3. 단백질 서열을 DNA 염기서열로 변환
+dna_sequence = "".join(codon_map[char] for char in protein_sequence)
+print(f"DNA Sequence from protein '{protein_sequence}': {dna_sequence}")
+
+##################################################################################################
+
+
+
+
+
+
+##################################################################################################
+
+from Bio.Seq import Seq
+
+# 문자와 대응하는 아미노산 및 코돈 설정 (필요한 문자를 모두 추가)
+codon_map = {
+    'A': 'GCT',  # Alanine
+    'B': 'AAT',  # Asparagine (임의의 할당)
+    'C': 'TGC',  # Cysteine
+    'D': 'GAT',  # Aspartic Acid
+    'E': 'GAG',  # Glutamic Acid
+    'F': 'TTT',  # Phenylalanine
+    'G': 'GGT',  # Glycine
+    'H': 'CAT',  # Histidine
+    'I': 'ATA',  # Isoleucine
+    'J': 'ATC',  # Isoleucine (J는 일반적으로 사용되지 않지만, I와 동일하게 처리)
+    'K': 'AAA',  # Lysine
+    'L': 'CTG',  # Leucine
+    'M': 'ATG',  # Methionine
+    'N': 'AAC',  # Asparagine
+    'O': 'CCG',  # Proline (임의의 할당)
+    'P': 'CCT',  # Proline
+    'Q': 'CAA',  # Glutamine
+    'R': 'CGT',  # Arginine
+    'S': 'AGT',  # Serine
+    'T': 'ACC',  # Threonine
+    'U': 'TGA',  # Stop codon (U는 일반적으로 사용되지 않지만, 여기서 TGA를 사용)
+    'V': 'GTT',  # Valine
+    'W': 'TGG',  # Tryptophan
+    'X': 'TAA',  # Stop codon (X는 stop codon을 나타냄)
+    'Y': 'TAC',  # Tyrosine
+    'Z': 'GAA',  # Glutamic Acid (임의의 할당)
+    ' ': 'TAA',  # Stop codon to represent space
+}
+
+# 코돈에서 문자로 역변환하기 위한 사전 생성
+reverse_codon_map = {v: k for k, v in codon_map.items()}
+
+def translate_dna_to_text(dna_sequence):
+    # 1. DNA 염기서열을 코돈 단위로 나누기
+    codons = [dna_sequence[i:i+3] for i in range(0, len(dna_sequence), 3)]
+    
+    # 2. 각 코돈을 문자로 변환 (코돈이 3개 염기로 완성된 경우에만 변환)
+    text = ""
+    for codon in codons:
+        if len(codon) == 3:
+            if codon in reverse_codon_map:
+                text += reverse_codon_map[codon]
+            else:
+                text += '?'  # 알 수 없는 코돈 처리 (에러 방지용)
+        else:
+            text += '?'  # 불완전한 코돈 처리 (에러 방지용)
+    
+    return text
+
+# 사용자로부터 DNA 염기서열 입력받기
+user_input = input("Enter a DNA sequence (multiple of 3 nucleotides): ").upper()
+translated_text = translate_dna_to_text(user_input)
+print(f"Translated text: {translated_text}")
+
+
