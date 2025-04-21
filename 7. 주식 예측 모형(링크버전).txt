@@ -1,7 +1,7 @@
 
 #야후 파이낸스 설치
 
-pip install yfinance
+!pip install yfinance
 
 
 
