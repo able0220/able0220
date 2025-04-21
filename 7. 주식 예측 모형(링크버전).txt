@@ -22,7 +22,8 @@ import csv
 import yfinance as yf
 ##########################################################
 ticker = 'MSFT'  # 마이크로소프트
-#########################################################
+######## 애플 AAPL , 마이크로소프트 MSF, 아마존 AMZN, 알파벳GOOG, 메타 META, 엔비디아 NVDA, 테슬라 TSLA, 넷플릭스 NFLX
+######## 삼성전자 005930.KS , sk 하이닉스 000660.KQ
 data = yf.download(ticker, start='2018-01-01', end='2024-01-01')
 
 data.dropna()
