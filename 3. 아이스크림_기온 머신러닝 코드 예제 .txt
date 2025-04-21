@@ -23,6 +23,11 @@ import numpy as np
 temp = np.array(temp)
 ice = np.array(ice)
 
+# 데이터 출력(temp, ice)
+print(temp)
+print(ice)
+
+
 
 #모델 정의
 model = tf.keras.models.Sequential([
