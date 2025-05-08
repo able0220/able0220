@@ -1,0 +1,254 @@
+Make,Model,Type,Origin,DriveTrain,Invoice,EngineSize,Cylinders,Horsepower,KPL_City,KPL_Highway,Weight,Wheelbase,Length
+Acura,NSX,sports,Asia,all,23000,3492,6,600,8,9.6,1747,2630,4534
+Acura,intergra,sedan,Asia,front,4584,1497,4,200,13,15,1427,2736,4719
+Alfa romeo,Stelvio,suv,EU,all,9500,2891,6,505,9.8,13.9,1800,2810,4680
+Alfa romeo,Giulia,sedan,EU,rear,8000,2891,6,505,11.1,16.7,1550,2820,4640
+Alpine,A110,sports,EU,rear,13925,1798,4,276,14,45,1121,2420,4180
+AstonMartin,DBX707,suv,EU,all,31700,3982,8,697,5,7,2245,3060,5040
+AstonMartin,DB11,sports,EU,rear,28000,3982,8,535,7,10,1870,2805,4750
+AstonMartin,Vantage,sports,EU,rear,21500,3982,8,503,7,12.1,1530,2704,4465
+Audi,A8,sedan,EU,all,14440,2976,6,286,10,13.7,2180,2998,5190
+Audi,Q8,suv,EU,all,13000,2995,6,340,7.3,9.2,2260,2998,5005
+Audi,Q7,suv,EU,all,12400,2995,6,340,7.2,9.4,2285,2999,5070
+Audi,A7,sedan,EU,all,9455,2995,6,340,8.3,11.6,1900,2930,4970
+Audi,A6,sedan,EU,all,7490,1984,4,265,9.8,13.6,1800,2924,4950
+Audi,Q5,suv,EU,all,7270,1984,4,265,9,11.7,1950,2819,4680
+Audi,A4,sedan,EU,front,5665,1984,4,204,11.1,14.5,1675,2822,4770
+Audi,Q3,suv,EU,front,5110,1968,4,150,13.4,16.9,1660,2680,4484
+Audi,A3,sedan,EU,front,5032,1984,4,204,11.5,15.4,1500,2636,4495
+Bently,Flying spur,sedan,EU,all,44190,3996,8,591,9,13,2646,3194,5316
+Bently,Continental GT,sedan,EU,all,39560,3996,8,550,6.5,8.8,2295,2851,4850
+Bently,Bentayga,suv,EU,all,30800,3996,8,550,6,7.8,2530,2995,5144
+Benz,G class,suv,EU,all,24900,3982,8,585,6.2,8,2560,2890,4885
+Benz,S class,sedan,EU,all,18200,2999,6,367,8.2,10.9,2100,3216,5290
+Benz,GLS,suv,EU,all,16460,2925,6,367,9.3,11.6,2500,3135,5210
+Benz,AMG SL,sports,EU,rear,15560,1991,4,381,6,8.8,1775,2700,4705
+Benz,CLE,suv,EU,all,13440,2999,6,381,7.6,9.5,2395,2995,4925
+Benz,GLE,suv,EU,all,11620,1993,4,272,9.5,11.9,2200,2995,4930
+Benz,E class,sedan,EU,all,9390,1999,4,258,9.5,12.4,1900,2960,4955
+Benz,GLC,suv,EU,all,8840,1999,4,258,9.7,12.4,1935,2888,4720
+Benz,GLB,suv,EU,all,6980,1950,4,224,9.5,12.2,1710,2830,2650
+Benz,GLA,suv,EU,all,6770,1991,4,224,9.8,12.5,1720,2730,4445
+Benz,C class ,sedan,EU,rear,6460,1999,4,204,10.5,14.2,1685,2865,4795
+Benz,CLA,sedan,EU,all,6100,1991,4,224,9.5,12.8,1605,2730,4695
+Benz,A class,hatchback,EU,front,4710,1991,4,190,10.7,14.5,1485,2730,4430
+Bmw,M8,sedan,EU,all,23840,4395,8,625,6.7,8.9,1920,2827,4865
+Bmw,I8,hybrid,EU,all,22180,1499,3,231,13.2,14.8,1660,2800,4689
+Bmw,7 series,sedan,EU,all,16775,2993,6,299,11,15.2,2315,3215,5390
+Bmw,M5,sedan,EU,all,16000,4395,8,600,7,9,1950,2980,4965
+Bmw,X7,suv,EU,all,15270,2993,6,340,9.2,11.3,2650,3105,5180
+Bmw,M3,sedan,EU,all,13760,2993,6,530,7,9.4,1890,2855,4800
+Bmw,M4,sedan,EU,all,13640,2993,6,530,7.3,10.1,1745,2857,4794
+Bmw,X6,suv,EU,all,13600,2993,6,352,10.3,12.8,2413,2975,4960
+Bmw,X5,suv,EU,all,11220,2993,6,313,10.3,12.8,2275,2933,4886
+Bmw,Z4,sports,EU,rear,9760,2998,6,387,9.2,11.2,1610,2470,4325
+Bmw,X4,suv,EU,all,9150,2993,6,352,9.6,12.4,2025,2864,4752
+Bmw,X3,suv,EU,all,7160,1998,4,184,10,12.4,1885,2864,4716
+Bmw,5 series,sedan,EU,rear,6940,1998,4,190,11.1,13.7,1835,2995,5060
+Bmw,X1,suv,EU,all,6830,1998,4,156,9.8,12.6,1700,2692,4554
+Bmw,X2,suv,EU,all,6830,1998,4,156,9.8,12.6,1700,2692,4554
+Bmw,3 series,sedan,EU,rear,5690,1998,4,184,10,13,1600,2851,4715
+Bmw,1 series,hatchback,EU,front,5090,1499,4,156,11.5,15.7,1445,2670,4319
+Bugatti,Tourbillon,hybrid,EU,all,566216,8300,16,1775,4.6,6,1995,2740,4671
+Bugatti,Bolide,hyper,EU,all,530000,7993,16,1578,4.6,6,1450,2750,4756
+Cadiliac,Escalade,suv,USA,all,16475,6162,8,426,5.9,8.1,2795,3071,5380
+Cadiliac,Ct5-v,sedan,USA,all,14000,6162,8,668,5.1,8.1,1965,2947,4945
+Century,Century,sedan,Asia,rear,18200,3994,8,193,7.6,13.6,2030,3025,4980
+Chevrolet,Corvette,hyper,USA,rear,9500,5499,8,1064,6,8,1665,2723,4722
+Chevrolet,Colorado,truck,USA,all,7279,2726,4,314,7.5,9.1,2150,3337,5410
+Chevrolet,Traverse,suv,USA,all,6127,3564,6,310,7.1,10.3,2090,3073,5230
+Chevrolet,Trailblazer,suv,USA,front,3069,1341,3,156,11.4,13.3,1350,2640,4425
+Chevrolet,Spark,mini,USA,front,1232,999,3,75,14.3,16,910,2385,3595
+Chrysler,300C,sedan,USA,rear,7590,6417,8,485,6.4,10.2,2000,3050,5044
+Chrysler,Pacifica,rv,USA,front,6451,3604,6,287,8.5,12.3,2050,3089,5176
+Chrysler,Grand Voyager,rv,USA,front,6070,3604,6,283,6.7,10.1,2140,3080,5175
+Chrysler,200s,sedan,USA,front,3800,3605,6,295,8.5,12.3,1600,2743,4885
+Citroen,C5 aircross,suv,EU,front,4729,1997,4,177,11.8,14,1685,2730,4500
+Citroen,SpaceTourer,rv,EU,front,4000,1598,4,115,11,15,1750,3275,5200
+Citroen,Berlingo,rv,EU,front,4000,1199,3,110,13,15,1700,2950,4400
+Citroen,C4,suv,EU,front,3400,1199,3,100,14,16,1300,2670,4360
+Citroen,Basalt,suv,EU,front,3000,1199,3,108,9,13,1450,2780,4400
+Citroen,C3,suv,EU,front,2200,1499,4,100,16,21,1100,2540,3990
+Daihatsu,Copen,sports,Asia,front,1875,660,3,64,22,25,850,2230,3395
+Daihatsu,Tanto,mini,Asia,front,1438,660,3,52,21,25,900,2460,3395
+Daihatsu,Move,mini,Asia,front,1260,660,3,52,21,25,900,2455,3395
+Dodge,Viper,sports,USA,rear,14490,8382,10,645,5.1,8.5,1550,2510,4460
+Dodge,Durango,suv,USA,all,6072,3604,6,295,9.4,13.6,2200,3042,5100
+Dodge,Charger,sports,USA,rear,5106,3604,6,300,9.4,13.6,1900,3050,5040
+Dodge,Challenger,sports,USA,rear,5106,3604,6,305,9.4,13.6,1800,2950,5020
+Dodge,Hornet,suv,USA,all,4140,1995,4,268,9.4,12.8,1750,2630,4530
+Dsautomoblie,DS9,sedan,EU,front,6880,1598,4,225,13,15.6,1560,2895,4930
+Dsautomoblie,DS7,suv,EU,front,5340,1199,3,131,10.5,13.7,1570,2740,4595
+Ford,Expedition,suv,USA,all,11270,3496,6,405,6.4,8.5,2730,3110,5335
+Ford,Mustang,sports,USA,rear,7870,5038,8,493,6.1,9.2,1835,2720,4810
+Ford,Bronco,suv,USA,all,7290,2261,4,275,7.9,9.4,2180,2950,4810
+Ford,Explorer,suv,USA,all,6595,2261,4,304,7.6,10.4,2125,3025,5050
+Ford,Ranger,truck,USA,all,6350,1966,4,205,9.1,11.7,2400,3270,5370
+Geely auto,Xingyue L,suv,Asia,front,2820,1997,4,235,15,20,1792,2845,4770
+Geely auto,Xingrui L,sedan,Asia,front,2820,1477,4,181,15,20,1550,2800,4825
+Geely auto,Boyue,suv,Asia,front,2350,1723,4,235,12,14,1650,2845,4770
+Geely auto,Emgrand,sedan,Asia,front,1600,1499,4,113,13,15,1250,2700,4686
+Genesis,G90,sedan,Asia,all,10567,3470,6,415,7.8,9.3,2190,3180,5275
+Genesis,GV80,suv,Asia,rear,7480,2497,4,304,8.7,10.2,2075,2955,4940
+Genesis,G80,sedan,Asia,rear,6559,3470,6,380,8.7,10,1930,3010,5005
+Genesis,GV70,suv,Asia,all,5584,2151,4,202,10.4,14.2,1965,2875,4715
+Genesis,G70,sedan,Asia,rear,4842,3342,6,370,8.5,10.4,1725,2835,4685
+GMC,Sierra,truck,USA,all,9590,6162,8,426,5.9,7.8,2575,3745,5890
+Honda,Pilot,suv,Asia,front,6840,3471,6,289,7.4,9.8,2130,2890,5090
+Honda,Odyssey,rv,Asia,front,6290,3471,6,284,7.7,11.2,2090,3000,5250
+Honda,CR-V,suv,Asia,all,5480,1993,4,184,14.6,13.4,1740,2700,4705
+Honda,Accord,sedan,Asia,front,4340,1993,4,184,17,16.2,1605,2830,4970
+Honda,CR-Z,hybrid,Asia,front,2436,1496,4,119,20.6,21.6,1150,2435,4105
+Honda,S660,mini,Asia,rear,1826,658,3,64,21.2,24.2,840,2285,3395
+Hyundai,Palisade,suv,Asia,all,5164,2497,4,281,8.1,10.9,2005,2970,5060
+Hyundai,Grandeur,sedan,Asia,front,4440,3470,6,300,7.3,13.1,1710,2895,5035
+Hyundai,Santafe,suv,Asia,all,4045,2497,4,281,9,12,1830,2815,4830
+Hyundai,Avante N,sedan,Asia,front,3514,1998,4,280,9.2,12.6,1500,2720,4710
+Hyundai,Staria,rv,Asia,all,3433,2199,4,177,9.6,12.3,2350,3275,5255
+Hyundai,Tuscon,suv,Asia,all,3392,1598,4,180,10.1,13.8,1630,2755,4650
+Hyundai,Sonata,sedan,Asia,front,3218,1598,4,180,9.3,14.5,1515,2840,4910
+Hyundai,Kona,suv,Asia,front,2897,1598,4,198,11.5,14.2,1430,2660,4350
+Hyundai,Venue,suv,Asia,front,2376,1598,4,123,12.4,15.2,1200,2520,4040
+Hyundai,Avante,sedan,Asia,front,2373,1598,4,123,10.3,15,1262,2720,4710
+Hyundai,Porter2,truck,Asia,all,2287,2469,4,148,6.6,7,1690,2640,5130
+Hyundai,Casper,mini,Asia,front,1760,998,3,88,12,15,1000,2580,3595
+Infiniti,QX80,suv,Asia,all,9800,5552,8,400,6.5,8.7,2750,3075,5350
+Infiniti,QX60,suv,Asia,all,7500,3496,6,296,8.3,11.1,2050,2900,4950
+Infiniti,QX55,suv,Asia,all,7300,1997,4,268,11.1,14.3,1750,2800,4730
+Infiniti,Q50,sedan,Asia,rear,7000,2997,6,400,9.1,12.5,1800,2850,4815
+Infiniti,Q60,coupe,Asia,rear,6560,2998,6,400,9.1,12.5,1800,2850,4690
+Infiniti,QX50,suv,Asia,all,6500,1997,4,268,11.1,14.3,1750,2760,4690
+Jaguar,F-coupe,sports,EU,rear,15034,2995,6,380,7.6,11.1,1740,2622,4482
+Jaguar,F-pace,suv,EU,all,7995,1997,4,204,11.9,14.2,2050,2847,4747
+Jaguar,XE,sedan,EU,rear,6740,1997,4,250,10.2,13.9,1680,2835,4672
+Jeep,Grand cherokee,hybrid,USA,all,10135,1995,4,272,8.2,9.7,2515,2965,4905
+Jeep,Wrangler,suv,USA,all,8005,1995,4,272,7.5,8.2,2102,3010,4840
+Jeep,Gladiator,truck,USA,all,7990,3604,6,284,6.1,7.2,2305,3490,5600
+Jeep,Renegade,suv,USA,front,4675,1332,4,171,9.2,12.3,1470,2570,4255
+KGM,Rexton,suv,Asia,all,4522,2157,4,202,9.3,12.7,2060,2865,4850
+KGM,Actyon,suv,Asia,all,3796,1497,4,170,10,12.5,1630,2680,4740
+KGM,Tores,suv,Asia,all,3384,1497,4,170,10.2,12.5,1520,2680,4705
+KGM,Musso Khan,truck,Asia,all,3382,2157,4,202,9.4,11,2180,3210,5415
+KGM,Musso Sports,truck,Asia,all,3162,2157,4,202,9.4,11.3,2160,3100,5105
+KGM,Korando,suv,Asia,all,2970,1497,4,170,10.5,13,1470,2675,4450
+KGM,Tivoli,suv,Asia,front,2581,1797,4,163,10.8,13.8,1360,2600,4225
+KiA,k9,sedan,Asia,front,6735,3342,6,370,7.8,11,2005,3105,5140
+KiA,k8,sedan,Asia,front,4309,3479,6,300,8.6,11.5,1670,2895,5050
+KiA,Carnival,rv,Asia,front,4186,2151,4,194,11.2,14.6,2115,3090,5155
+KiA,Sorento,suv,Asia,all,4064,2497,4,281,9.3,11.2,1835,2815,4815
+KiA,K5,sedan,Asia,front,3154,1999,4,160,12.2,16.1,1435,2850,4905
+KiA,Sportage,suv,Asia,front,3146,1598,4,180,11.5,12.3,1595,2755,4685
+KiA,Niro hybrid,suv,Asia,front,2990,1580,4,104,21.9,19.6,1425,2720,4420
+KiA,Seltos,suv,Asia,front,2523,1598,4,198,11.8,12.8,1382,2630,4390
+KiA,Bongo3,truck,Asia,all,2330,2469,4,138,6.7,7.4,1690,2615,5115
+KiA,Ray,rv,Asia,front,1833,998,3,76,12.2,13.8,1090,2520,3595
+KiA,Morning,mini,Asia,front,1485,998,3,76,13.8,16.9,915,2400,3595
+Koenigsegg,Jesko,hyper,EU,rear,338000,5000,8,1600,6,7,1420,2700,4610
+Koenigsegg,Gemera,hyper,EU,front,220000,5000,8,1500,6,7,1995,3000,4975
+Lamborghini,SVJ,hyper,EU,all,60000,6498,12,770,5,7,1525,2700,4937
+Lamborghini,Huracan,sports,EU,rear,34000,5204,10,640,5.8,7.8,1379,2620,4311
+Lamborghini,Urus,suv,EU,all,32890,3996,8,666,5.4,7.8,2150,3006,5137
+LandRover,Rangerover-phev,suv,EU,all,23900,2997,6,550,8.2,9.5,3025,2997,5052
+LandRover,Defender,suv,EU,all,12467,2997,6,300,9.5,11.2,2510,3022,4758
+Lexus,LC,hybrid,Asia,rear,19240,3456,6,359,10.5,11.5,2005,2870,4760
+Lexus,LS,hybrid,Asia,all,16642,3456,6,359,8.8,10.9,2370,3125,5235
+Lexus,RX f,hybrid,Asia,front,11967,2393,4,371,9.4,10.7,2150,2850,4890
+Lexus,ES,hybrid,Asia,front,6925,2487,4,218,16.8,17.2,1680,2870,4975
+Lincoln,Navigator,suv,USA,all,15040,3496,6,446,6.4,8.4,2775,3110,5335
+Lincoln,Aviator,suv,USA,all,9860,2956,6,400,6.9,9.1,2325,3025,5075
+Lincoln,Nautilus,suv,USA,all,7740,1995,4,252,7.9,10.9,2065,2900,4910
+Lincoln,Mkx,suv,USA,all,6000,2694,6,340,6.6,9.3,2170,2848,4830
+Lincoln,Mkz,hybrid,USA,front,5815,1999,4,234,15.3,16.2,1775,2850,4925
+Lotus,Emira,sports,EU,rear,15390,3456,6,405,6.8,8.3,1495,2570,4415
+Lotus,Emeya,sports,EU,rear,13000,3456,6,400,9.5,13.3,1450,2535,4412
+Maserati,Mc20,sports,EU,rear,33700,2992,6,630,5.9,9.1,1628,2700,4670
+Maserati,Granturismo,sports,EU,all,27325,2992,6,550,7.2,10.6,1795,2929,4962
+Maserati,Grecale,suv,EU,all,13800,2998,6,530,8,10.2,2080,2901,4860
+Maybach,G650,suv,EU,all,93200,5980,12,630,4.8,6,3300,3428,5345
+Maybach,S680,sedan,EU,all,37360,5980,12,630,4.9,8,2340,3396,5470
+Maybach,GLS600,suv,EU,all,29900,3982,8,557,5.3,7.4,2785,3135,5205
+Mclaren,P1,hyper,EU,rear,150000,3799,8,903,9,11,1490,2640,4530
+Mclaren,Sena,hyper,EU,rear,130000,3994,8,800,6,7,1198,2670,4619
+Mclaren,750s,sports,EU,rear,450000,3994,8,750,9,11,1400,2670,4370
+Mclaren,W1,hybrid,EU,rear,305267,3988,8,916,11,13,1399,2680,4635
+Mclaren,GTS,sports,EU,rear,280000,3994,8,620,10,12,1530,2670,4670
+Mini,Convertible JCW,sedan,EU,front,5930,1998,4,231,10,13.5,1405,2495,3870
+Mini,Countryman,suv,EU,front,4950,1499,3,136,10.5,13.2,1540,2670,4295
+Mini,Hatchback,hatchback,EU,front,4810,1998,4,204,11.3,15.1,1355,2495,3875
+Mini,Clubman,suv,EU,front,4700,1499,3,136,10.4,13.3,1480,2670,4266
+Mitsubishi,L200,truck,Asia,all,4400,2442,4,201,9,10,1900,3130,5320
+Mitsubishi,Outlander,suv,Asia,front,4096,1497,4,103,10,12,1450,2670,4365
+Mitsubishi,Eclipse,sports,Asia,front,4040,2378,1,165,11,16,1530,2575,4600
+Mitsubishi,Xforce,suv,Asia,front,3700,1499,4,105,9,10,1245,2650,4390
+Mitsubishi,Xpander,rv,Asia,front,2800,1498,4,103,11,13,1235,2775,4500
+Nissan,GT-R,sports,Asia,all,17500,3799,6,600,6.8,9.3,1747,2788,4688
+Nissan,Patrol,suv,Asia,all,12849,5552,6,425,6,8,2750,3075,5165
+Nissan,Z ,sports,Asia,rear,7200,2997,6,400,7.6,10.6,1625,2550,4380
+Nissan,Maxima,sedan,Asia,front,5744,3498,6,300,9.4,12.8,1645,2775,4900
+Nissan,Murano,suv,Asia,all,5490,1997,4,241,9,11,1900,2824,4899
+Nissan,Juke,suv,Asia,front,4112,999,3,114,13,17,1250,2636,4210
+Nissan,Altima,sedan,Asia,front,4000,2488,4,188,11.5,16.6,1471,2824,4900
+Nissan,Serena,rv,Asia,front,3134,1433,3,163,14,16,1800,2870,4700
+Nissan,Sentra,sedan,Asia,front,2900,1997,4,149,11.5,15.3,1325,2712,4646
+Nissan,Magnite,suv,Asia,front,960,999,3,100,17.4,19.7,1000,2500,3944
+Pagani,Utopia,sports,EU,rear,350000,5980,12,852,5,7,1550,2720,4750
+Pagani,Zonda,sports,EU,rear,200000,7291,12,760,5,7,1250,2600,4420
+Pagani,Imola,sports,EU,rear,670000,5980,12,827,5,7,1246,2720,4728
+Pagani,Huayra,sports,EU,rear,400000,5980,12,730,7,11,1350,2700,4605
+Peugeot,Peugeot-5008,suv,EU,front,4750,1199,3,130,10.8,14.2,1590,2840,4650
+Peugeot,Peugeot-408,sedan,EU,front,4490,1199,3,131,11.5,15,1437,2790,4700
+Peugeot,Peugeot-3008,suv,EU,front,4370,1199,3,130,11.1,13.8,1490,2675,4455
+Porsche,911 GT3,sports,EU,rear,25160,3996,6,503,5.9,7.3,1475,2450,4575
+Porsche,Targa,sports,EU,all,18960,2981,6,458,7.8,8.5,1670,2450,4520
+Porsche,Panamera,sedan,EU,all,16830,2894,6,336,7.1,9.6,1980,2950,5049
+Porsche,Cayene,suv,EU,all,13980,2995,6,355,6.7,8.7,2195,2895,4930
+Porsche,Caymam,sports,EU,rear,13050,3995,6,407,7.5,9.7,1465,2475,4405
+Porsche,Macan,suv,EU,all,10780,2894,6,375,7,9,1965,2805,4725
+Porsche,Boxter,sports,EU,rear,10130,2497,6,350,8,10.7,1440,2475,4379
+Ram,Ram-1500,truck,USA,all,6820,2998,6,260,14,17,2200,3570,5820
+Ram,Ram-1200,truck,USA,all,4320,2378,4,207,10.1,12.1,2045,3180,5330
+Renault,Koleos,suv,EU,all,4800,2498,4,171,11.5,14.5,1700,2705,4672
+Renault,Capture,hybrid,EU,front,4000,1597,4,140,20,18,1400,2640,4230
+Renault,Master,ban,EU,front,3845,2299,4,150,10.7,11.1,2090,3685,5575
+Renault,Arkana,suv,EU,front,3800,1333,4,160,14.3,18.2,1400,2720,4570
+Renault,Clio,hatchback,EU,front,3000,1461,4,85,23,26,1150,2588,4050
+Rollsroyce,Phantom,sedan,EU,rear,71200,6749,12,563,4.8,7.8,2690,3552,5770
+Rollsroyce,Cullinan,suv,EU,all,57700,6749,12,571,4.6,7.1,2755,3295,5355
+Rollsroyce,Ghost,sedan,EU,rear,52400,6750,12,563,4.5,7.2,2490,3295,5545
+Subaru,CrossTrek,suv,Asia,all,4135,2498,4,182,9.3,12.3,1525,2670,4480
+Subaru,Impreza,sedan,Asia,all,2800,1995,4,152,10,14,1400,2670,4475
+Suzuki,S-cross,suv,Asia,all,3000,1373,4,129,16.1,20.4,1300,2600,4300
+Suzuki,Escudo,suv,Asia,all,2900,1373,4,140,13.3,17.2,1400,2500,4175
+Suzuki,Jimny,suv,Asia,all,2600,1462,4,102,13,16.1,1110,2250,3645
+Suzuki,Swift,hatchback,Asia,front,2200,998,3,111,20,25,950,2450,3845
+Suzuki,Carry,ban,Asia,all,2000,660,3,64,11.8,13.9,750,2190,3395
+Suzuki,Spacia,rv,Asia,all,1800,658,3,52,25,28.5,750,2460,3395
+Suzuki,Ignis,suv,Asia,all,1800,1197,4,83,19.2,22.2,980,2435,3700
+Suzuki,Hustler,suv,Asia,all,1750,658,3,64,24.4,28.5,695,2460,3395
+Suzuki,Alto,hatchback,Asia,all,900,658,3,49,25,28.5,695,2460,3395
+Toyota,Alphard hybrid,rv,Asia,all,9920,2487,4,250,14.3,12.7,2330,3000,5005
+Toyota,GR Supra,sports,Asia,rear,7980,2998,6,382,9.1,12,1525,2470,4830
+Toyota,Highlander hybrid,suv,Asia,all,7470,2487,4,246,14.3,13.3,2085,2850,4965
+Toyota,Crown Crossover hybrid,sedan,Asia,all,6945,2487,4,239,16.2,18.4,1980,2850,4980
+Toyota,Sienna hybrid,rv,Asia,front,6400,2487,4,246,15,14,2145,3060,5175
+Toyota,Camry hybrid,sedan,Asia,front,5360,2487,4,224,17.5,16.7,1625,2825,4920
+Toyota,Lav4 hybrid,suv,Asia,all,4998,2487,4,222,14.5,13.7,1730,2690,2600
+Toyota,Prius,hatchback,Asia,front,4990,1987,4,223,20.2,18.5,1690,2750,4600
+Toyota,GR 86,sports,Asia,rear,4770,2387,4,231,8.2,11.9,1280,2575,4265
+Volkswagen,Touareg,suv,EU,all,10399,2967,6,286,9.6,12.8,2271,2899,4890
+Volkswagen,Ateon,sedan,EU,front,5880,1968,4,200,13.7,18.5,1680,2840,4865
+Volkswagen,Tiguan,suv,EU,front,5374,1984,4,186,9,11.9,1752,2790,4730
+Volkswagen,CC,sedan,EU,front,4970,1968,4,184,13.5,15.1,1682,2710,4800
+Volkswagen,Passat,sedan,EU,front,4729,1968,4,200,14.3,15.7,1594,2786,4775
+Volkswagen,Scirocco,hatchback,EU,front,4330,1968,4,184,13.3,17.1,1442,2578,4255
+Volkswagen,Golf,hatchback,EU,front,4127,1968,4,148,15.2,20.8,1456,2631,4280
+Volkswagen,Transporter T6,rv,EU,front,3976,1968,4,150,12,16,2000,3000,5000
+Volkswagen,Zeta,sedan,EU,front,3618,1498,4,160,12.3,17.1,1416,2686,4740
+Volkswagen,Beetle,sedan,EU,front,3383,1984,4,174,13,16,1381,2540,4288
+Volvo,XC90,suv,Asia,all,9650,1969,4,300,8.4,11.3,2145,2984,4955
+Volvo,V90,suv,Asia,all,7820,1969,4,250,9.7,13,1910,2941,4960
+Volvo,S90,sedan,Asia,all,7400,1969,4,300,9.5,13.5,1940,3060,5090
+Volvo,XC60,suv,Asia,all,7400,1969,4,300,8.8,11.5,1935,2865,4710
+Volvo,S60,sedan,Asia,front,5690,1969,4,250,10.5,14.3,1715,2872,4780
+Volvo,XC40,suv,Asia,all,5460,1969,4,197,9.2,12.2,1745,2702,4440
+W motors,Lykan Hyper sport,sports,Asia,rear,380000,3746,6,770,6,7.4,1380,2625,4480
