@@ -13,7 +13,6 @@ import seaborn as sns
 import csv
 
 
-
 #기업 설정
 
 SK = 'https://raw.githubusercontent.com/able0220/able0220/refs/heads/main/stock/000660.KQ.csv'
