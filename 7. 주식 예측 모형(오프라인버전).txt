@@ -30,7 +30,7 @@ TSLA = 'https://raw.githubusercontent.com/able0220/able0220/refs/heads/main/stoc
 
 ######## 애플 AAPL , 마이크로소프트 MSF, 아마존 AMZN, 알파벳GOOG, 메타 META, 엔비디아 NVDA, 테슬라 TSLA, 넷플릭스 NFLX
 ######## 삼성전자 SAMSUNG , sk 하이닉스 SK
-data = pd.read_csv(NVDA)  # 넷플릭스 데이터 읽기 
+data = pd.read_csv(NVDA)  # 엔비디아 데이터 읽기 
 data = data.dropna()
 print(data.head())
 
