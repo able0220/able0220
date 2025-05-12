@@ -8,10 +8,9 @@ import warnings
 import os
 %matplotlib inline
 warnings.filterwarnings('ignore')
-plt.rcParams['font.family'] = 'NanumGothic'
+plt.rcParams['font.family'] = 'DejaVu Sans'
 import seaborn as sns
 import csv
-
 
 #기업 설정
 
