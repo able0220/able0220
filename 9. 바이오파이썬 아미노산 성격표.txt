@@ -202,6 +202,7 @@ for codon in codons:
 ##################################################################################################
 
 # 1. 카운트
+from collections import Counter
 aa_counter = Counter()
 for codon in codons:
     aa, _, _ = codon_analysis.get(codon, ("❓ 알 수 없음", "-", "-"))
@@ -224,6 +225,7 @@ print("\n🏆 가장 많이 등장한 유전자 TOP 3")
 print("=" * 50)
 for aa, count, personality in top_3_detailed:
     print(f"- {aa}: {count}회 등장 / {personality}")
+
 
 
 ##################################################################################################
