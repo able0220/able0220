@@ -4,7 +4,6 @@
 !pip install yfinance
 
 
-
 #각 설정 가져오기
 import pandas as pd
 import numpy as np
@@ -14,7 +13,7 @@ import warnings
 import os
 %matplotlib inline
 warnings.filterwarnings('ignore')
-plt.rcParams['font.family'] = 'NanumGothic'
+plt.rcParams['font.family'] = 'DejaVu Sans'
 import seaborn as sns
 import csv
 
