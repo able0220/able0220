@@ -1,0 +1,68 @@
+#파일 업로드 (Colab 전용)
+from google.colab import files
+icec = files.upload()
+
+
+
+#필요 라이브러리
+import csv
+import numpy as np
+import matplotlib.pyplot as plt
+import tensorflow as tf
+
+
+
+#데이터 읽기
+temp = []
+ice = []
+
+with open('iceweather.csv', encoding='cp949') as f:
+    data = csv.reader(f)
+    next(data)  # 헤더 건너뛰기
+    for row in data:
+        try:
+            temp.append(float(row[1]))  # 평균기온
+            ice.append(float(row[4]))   # 아이스크림 판매량
+        except ValueError:
+            continue
+
+
+
+#리스트 → 넘파이 배열
+temp = np.array(temp)
+ice = np.array(ice)
+
+
+
+#데이터 확인
+print(temp)
+print(ice)
+
+
+
+#모델 정의
+model = tf.keras.models.Sequential([
+    tf.keras.layers.Dense(5, input_dim=1, activation='relu'),
+    tf.keras.layers.Dense(3),
+    tf.keras.layers.Dense(1),
+])
+model.compile(loss='mean_squared_error', optimizer='adam')
+
+
+# 학습
+model.fit(temp, ice, epochs=500)
+
+
+
+#그래프 출력
+plt.plot(temp, ice, 'bx')
+plt.plot(temp, model.predict(temp), 'red')
+plt.legend()
+plt.show()
+
+
+#예측값 확인
+a = np.array([[1]])
+predictions = model.predict(a)
+print(predictions)
+
