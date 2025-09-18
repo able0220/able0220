@@ -1,3 +1,4 @@
+################################### p, q e 설정하기 -> d 자동 계산
 # e 원하는 값 설정
 p = int (input("p : "))
 q = int (input("q : "))
@@ -21,19 +22,11 @@ print("N : {}".format(n))
 print("개인키(d) : {}".format(privatekey()))
 
 
-####################### 암호화 된 메시지 원본 구현
-#암호화 된 숫자 원본으로 변환하기
-n = int (input("N 값 입력 : "))
-m = int (input("암호화된 숫자  입력 : "))
-d = int (input("복원값 d 값 입력 : "))
-x = m**d
-print("메시지 값 ", x%n)
 
 
 
 
-
-#메시지를 암호로 변경 하기
+################메시지를 암호로 변경 하기
 n = int (input("n 값 입력 : "))
 e = int (input("공개키 e 값 입력 : "))
 m = int (input("원하는 숫자  : "))
@@ -41,6 +34,14 @@ x = m**e
 print("암호화 된 숫자 ", x%n)
 
 
+
+####################### 암호화 된 메시지 원본 구현
+#암호화 된 숫자 원본으로 변환하기
+n = int (input("N 값 입력 : "))
+m = int (input("암호화된 숫자  입력 : "))
+d = int (input("복원값 d 값 입력 : "))
+x = m**d
+print("메시지 값 ", x%n)
 
 
 
@@ -164,5 +165,6 @@ def translate_dna_to_text(dna_sequence):
 user_input = input("Enter a DNA sequence (multiple of 3 nucleotides): ").upper()
 translated_text = translate_dna_to_text(user_input)
 print(f"Translated text: {translated_text}")
+
 
 
