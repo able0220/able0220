@@ -62,7 +62,7 @@ plt.show
 from google.colab import files
 test = files.upload()
 
-
+import cv2 
 file_name = list(test.keys())[0]  # "test1.png" 파일을 하나 업로드한다고 가정
 # 이미지 파일 읽기
 gray = cv2.imread(file_name, cv2.IMREAD_GRAYSCALE)
@@ -80,3 +80,4 @@ test_num = test_num.reshape((-1, 28, 28))  # 모델 입력 형태에 맞게 재�
 predictions = model.predict(test_num)
 predicted_digit = np.argmax(predictions)
 print("예측된 숫자:", predicted_digit)
+
