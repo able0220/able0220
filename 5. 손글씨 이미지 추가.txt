@@ -13,7 +13,7 @@ x_train.shape
 
 plt.imshow(x_train[0])
 plt.colorbar()
-plt.show
+plt.show()
 
 
 
@@ -22,7 +22,7 @@ x_train, x_test = x_train / 255.0, x_test / 255.0
 
 plt.imshow(x_train[0])
 plt.colorbar()
-plt.show
+plt.show()
 
 
 model = tf.keras.models.Sequential([
@@ -52,7 +52,7 @@ np.argmax(prediction[10])
 
 plt.imshow(x_test[10])
 plt.colorbar()
-plt.show
+plt.show()
 
 
 
@@ -80,4 +80,5 @@ test_num = test_num.reshape((-1, 28, 28))  # 모델 입력 형태에 맞게 재�
 predictions = model.predict(test_num)
 predicted_digit = np.argmax(predictions)
 print("예측된 숫자:", predicted_digit)
+
 
