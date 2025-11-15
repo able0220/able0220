@@ -1,0 +1,60 @@
+# ---- 중요: Teachable Machine 모델 groups 문제 패치 ----
+import tensorflow as tf
+from tensorflow import keras
+
+class PatchedDepthwiseConv2D(keras.layers.DepthwiseConv2D):
+    def __init__(self, *args, groups=1, **kwargs):
+        super().__init__(*args, **kwargs)
+
+# ------------------------------------------------------
+
+from keras.models import load_model
+from PIL import Image, ImageOps
+import numpy as np
+
+np.set_printoptions(suppress=True)
+
+# 모델 로드
+model = load_model(
+    "keras_model.h5",
+    compile=False,
+    custom_objects={"DepthwiseConv2D": PatchedDepthwiseConv2D}
+)
+
+# 라벨 로드
+class_names = open("labels.txt", "r").readlines()
+
+# 입력 배열 준비
+data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+
+# 이미지 파일 로드
+image = Image.open("photo.jpg").convert("RGB")
+
+size = (224, 224)
+image = ImageOps.fit(image, size, Image.Resampling.LANCZOS)
+
+image_array = np.asarray(image)
+normalized_image_array = (image_array.astype(np.float32) / 127.5) - 1
+data[0] = normalized_image_array
+
+# 예측
+prediction = model.predict(data)
+index = np.argmax(prediction)    # ← 예측된 클래스 번호 (0,1,2,...)
+confidence_score = prediction[0][index]
+class_name = class_names[index].strip()
+
+print("Class:", class_name)
+print("Confidence Score:", confidence_score)
+
+# --------------------------
+# 🔥 조건문 출력 기능 추가
+# --------------------------
+
+if index == 0:
+    print("안녕")
+elif index == 1:
+    print("반가워")
+elif index == 2:
+    print("좋은 하루야!")
+else:
+    print("알 수 없는 클래스입니다.")
