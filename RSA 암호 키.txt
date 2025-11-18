@@ -1,49 +1,73 @@
-################################### p, q e 설정하기 -> d 자동 계산
-# e 원하는 값 설정
-p = int (input("p : "))
-q = int (input("q : "))
-e = int (input("e : "))
+###################################
+# 1단계 : RSA 공개키·개인키 생성 (정식 버전)
+###################################
+
+# 두 소수 입력
+p = int(input("p 값 입력 : "))
+q = int(input("q 값 입력 : "))
+
+# 공개키 e 입력
+e = int(input("e 값 입력 (φ(n)과 서로소여야 함) : "))
+
+# n과 φ(n) 계산
 n = p * q
-tot = (p - 1) * (q - 1)
-#최대공약수 구하는 거
-def gcd(num1, num2):
-    while num2 != 0:
-        num1, num2 = num2, num1%num2
-    return num1
-#개인키
-def privatekey():
-    global e
-    global tot
-    d = 1
-    while (e * d) % tot != 1 or d == e:
-        d += 1
-    return d
-print("N : {}".format(n))
-print("개인키(d) : {}".format(privatekey()))
+phi = (p - 1) * (q - 1)
+
+# e 유효성 검사
+if e <= 1 or e >= phi or gcd(e, phi) != 1:
+    print("\n❌ e 값이 잘못되었습니다.")
+    print("조건: 1 < e < φ(n) AND gcd(e, φ(n)) = 1 이어야 합니다.\n")
+    exit()
+
+# d = e의 모듈러 역원 (정식 방식)
+def mod_inverse(e, phi):
+    for d in range(1, phi):
+        if (e * d) % phi == 1:
+            return d
+
+d = mod_inverse(e, phi)
+
+print("\n===== 공개키·개인키 생성 완료 =====")
+print(f"n : {n}")
+print(f"φ(n) : {phi}")
+print(f"공개키 (e, n) = ({e}, {n})")
+print(f"개인키 (d, n) = ({d}, {n})")
+print("==================================\n")
+
+
+
+###################################
+# 2단계 : 메시지 암호화
+###################################
+
+n = int(input("암호화용 n 값 : "))
+e = int(input("공개키 e 값 : "))
+m = int(input("암호화할 메시지(숫자) : "))
+
+# 암호화 공식 C = M^e mod n
+cipher = pow(m, e, n)
+
+print("\n===== 암호화 결과 =====")
+print("암호문 :", cipher)
+print("=======================\n")
 
 
 
 
+###################################
+# 3단계 : 암호문 복호화
+###################################
 
+n = int(input("복호화할 n 값 : "))
+cipher = int(input("암호화된 숫자 입력 : "))
+d = int(input("개인키 d 값 입력 : "))
 
-################메시지를 암호로 변경 하기
-n = int (input("n 값 입력 : "))
-e = int (input("공개키 e 값 입력 : "))
-m = int (input("원하는 숫자  : "))
-x = m**e
-print("암호화 된 숫자 ", x%n)
+# 복호화 공식 M = C^d mod n
+message = pow(cipher, d, n)
 
-
-
-####################### 암호화 된 메시지 원본 구현
-#암호화 된 숫자 원본으로 변환하기
-n = int (input("N 값 입력 : "))
-m = int (input("암호화된 숫자  입력 : "))
-d = int (input("복원값 d 값 입력 : "))
-x = m**d
-print("메시지 값 ", x%n)
-
-
+print("\n===== 복호화 결과 =====")
+print("복원된 원래 메시지 :", message)
+print("=======================\n")
 
 
 
@@ -165,6 +189,7 @@ def translate_dna_to_text(dna_sequence):
 user_input = input("Enter a DNA sequence (multiple of 3 nucleotides): ").upper()
 translated_text = translate_dna_to_text(user_input)
 print(f"Translated text: {translated_text}")
+
 
 
 
