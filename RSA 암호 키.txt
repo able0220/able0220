@@ -37,38 +37,37 @@ print("==================================\n")
 
 
 ###################################
-# 2단계 : 메시지 암호화
+# 2단계 : 메시지(M)를 암호화하기
 ###################################
 
-n = int(input("암호화용 n 값 : "))
-e = int(input("공개키 e 값 : "))
-m = int(input("암호화할 메시지(숫자) : "))
+n = int(input("n 값 입력 : "))
+e = int(input("공개키 e 값 입력 : "))
+m = int(input("암호화할 숫자(메시지) : "))
 
-# 암호화 공식 C = M^e mod n
-cipher = pow(m, e, n)
+# 암호화 공식 : C = M^e mod n
+cipher = (m ** e) % n
 
 print("\n===== 암호화 결과 =====")
-print("암호문 :", cipher)
+print("암호화된 값 :", cipher)
 print("=======================\n")
 
 
 
 
 ###################################
-# 3단계 : 암호문 복호화
+# 3단계 : 암호문(C)을 복호화하여 원래 메시지(M) 찾기
 ###################################
 
-n = int(input("복호화할 n 값 : "))
+n = int(input("n 값 입력 : "))
 cipher = int(input("암호화된 숫자 입력 : "))
 d = int(input("개인키 d 값 입력 : "))
 
-# 복호화 공식 M = C^d mod n
-message = pow(cipher, d, n)
+# 복호화 공식 : M = C^d mod n
+message = (cipher ** d) % n
 
 print("\n===== 복호화 결과 =====")
-print("복원된 원래 메시지 :", message)
+print("복원된 원본 메시지 :", message)
 print("=======================\n")
-
 
 
 
@@ -189,6 +188,7 @@ def translate_dna_to_text(dna_sequence):
 user_input = input("Enter a DNA sequence (multiple of 3 nucleotides): ").upper()
 translated_text = translate_dna_to_text(user_input)
 print(f"Translated text: {translated_text}")
+
 
 
 
