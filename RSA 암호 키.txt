@@ -14,7 +14,7 @@ n = p * q
 phi = (p - 1) * (q - 1)
 
 # e 유효성 검사
-if e <= 1 or e >= phi or gcd(e, phi) != 1:
+if e <= 1 or e >= phi != 1:
     print("\n❌ e 값이 잘못되었습니다.")
     print("조건: 1 < e < φ(n) AND gcd(e, φ(n)) = 1 이어야 합니다.\n")
     exit()
@@ -188,6 +188,7 @@ def translate_dna_to_text(dna_sequence):
 user_input = input("Enter a DNA sequence (multiple of 3 nucleotides): ").upper()
 translated_text = translate_dna_to_text(user_input)
 print(f"Translated text: {translated_text}")
+
 
 
 
