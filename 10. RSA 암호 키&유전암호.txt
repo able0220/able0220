@@ -73,7 +73,12 @@ print("=======================\n")
 
 
 
-#########################################################
+
+
+
+##########################################################################
+바이오 파이썬 암호화
+##########################################################################
 !pip install biopython
 
 
@@ -188,6 +193,7 @@ def translate_dna_to_text(dna_sequence):
 user_input = input("Enter a DNA sequence (multiple of 3 nucleotides): ").upper()
 translated_text = translate_dna_to_text(user_input)
 print(f"Translated text: {translated_text}")
+
 
 
 
