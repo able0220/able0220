@@ -15,7 +15,8 @@ for row in data.itertuples():
 print(temp[:5])  # 처음 몇 개 확인
 print(ice[:5])
 
-
+temp = np.array(temp, dtype=np.float32).reshape(-1, 1)  # (수정) shape 맞추기
+ice  = np.array(ice,  dtype=np.float32).reshape(-1, 1)  # (수정)
 
 
 # 리스트를 numpy 배열로 변환
@@ -40,8 +41,13 @@ model.compile(loss='mean_squared_error', optimizer='adam')
 model.fit(temp, ice, epochs=50)
 
 import matplotlib.pyplot as plt
+
+# (수정) temp 정렬해서 예측선 그리기 (이거 안 하면 선이 이상해 보일 수 있음)
+idx = np.argsort(temp[:, 0])
+
 #그래프 출력
 plt.plot(temp,ice,'bx')
 plt.plot(temp,model.predict(temp),'Red')
 plt.legend()
 plt.show()
+
