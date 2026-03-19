@@ -1,0 +1,128 @@
+# 1번째 복사 구역
+import pandas as pd
+url = 'https://raw.githubusercontent.com/able0220/able0220/main/Cars%20Data.csv' # 에이블 github 자료에 내용 추가
+data = pd.read_csv(url)
+print(data.head())  # 데이터의 처음 몇 줄을 출력하여 확인
+
+
+#2번째 복사 구역
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+data.isnull().sum()  # 결측치(비어 있는 데이터가 있는지 확인)
+data.dropna()   #해당 결측치 값이 존재 하는 행 삭제
+data = data.dropna() #data 저장공간에 결측치 제거된 데이터로 갱신
+data['Invoice'] = data['Invoice'].replace('[\$,]', '', regex=True).astype(float) #금액 통화 기호 제거 -> 일반 숫자로 전환
+
+#3번째 
+
+_ = data.hist(figsize= (10,8)) # 전체 그래프로 대략적으로 표현
+
+
+####################################################################################
+#AI 활용 값 예측
+####################################################################################
+
+
+# 머신러닝 관련 라이브러리 불러오기
+# train_test_split : 데이터를 학습용 / 테스트용으로 나누기 위한 함수
+# LinearRegression : 선형 회귀 모델 (데이터의 관계를 학습하여 값을 예측하는 AI 모델)
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+
+# -------------------------------
+# 1. 학습에 사용할 데이터 설정
+# -------------------------------
+# 입력값(X) : 자동차의 마력(Horsepower)
+# 데이터프레임 형태로 전달해야 하므로 대괄호 두 개 사용
+X = data[['Horsepower']]
+# 결과값(y) : 자동차 가격(Invoice)
+# AI가 예측하려는 목표 값
+y = data['Invoice']
+# -------------------------------
+# 2. 데이터 분리
+# -------------------------------
+# 데이터를 학습용(train)과 테스트용(test)으로 분리
+# test_size=0.2 → 전체 데이터의 20%를 테스트용으로 사용
+# 학습용 데이터로 AI를 학습시키고, 테스트 데이터로 성능을 확인
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+# -------------------------------
+# 3. AI 모델 생성 및 학습
+# -------------------------------
+# 선형 회귀 모델 생성
+model = LinearRegression()
+# 학습 데이터(X_train, y_train)를 이용하여 AI 모델 학습
+# 마력(Horsepower)과 가격(Invoice) 사이의 관계를 학습
+model.fit(X_train, y_train)
+# -------------------------------
+# 4. 가격 예측
+# -------------------------------
+# 테스트 데이터의 마력을 입력하여 자동차 가격을 예측
+pred = model.predict(X_test)
+
+# -------------------------------
+# 5. 결과 시각화
+# -------------------------------
+# 실제 데이터 (파란 점)
+plt.scatter(X_test, y_test)
+
+# AI가 예측한 가격 (빨간 선)
+plt.plot(X_test, pred, color='red')
+
+# 그래프 라벨 설정
+plt.xlabel("Horsepower")   # x축 : 마력
+plt.ylabel("Price")        # y축 : 자동차 가격
+
+# 그래프 출력
+plt.show()
+
+# -------------------------------
+# 6. 새로운 데이터 예측
+# -------------------------------
+
+# 마력이 300인 자동차가 있다고 가정했을 때
+# AI가 예측하는 예상 가격 계산
+model.predict([[300]])
+
+####################################################################################
+#AI 활용 값 예측 구간
+####################################################################################
+
+
+
+
+
+
+################################################################################################################################
+##최신 차량 관련 자료
+
+# 1번째 복사 구역
+import pandas as pd
+url = 'https://raw.githubusercontent.com/able0220/able0220/main/Cars%20Data_test.csv' # 에이블 github 자료에 내용 추가
+data = pd.read_csv(url)
+print(data.head())  # 데이터의 처음 몇 줄을 출력하여 확인
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+df= data
+import plotly.express as px # 고급 라이브러리 기능
+
+
+
+
+####################################################### 아래 내용 참고
+# 너무 높은 금액 제외 (상위 5% 초과 값 제거)
+threshold = df["Invoice"].quantile(0.90)  # 95% 이하만 유지, 숫자 변경에 따라 관련
+df_filtered = df[df["Invoice"] <= threshold]  # 필터링된 데이터
+
+# Plotly 산점도 생성 (필터링된 데이터)
+fig = px.scatter(
+    df_filtered, 
+    x='KPL_City', 
+    y='Invoice',
+    hover_data=['Model','Make'],  # 모델 정보 표시
+    title="Horsepower vs Invoice Price Scatter Plot (Filtered)"
+)
+
+# 그래프 표시
+fig.show()
