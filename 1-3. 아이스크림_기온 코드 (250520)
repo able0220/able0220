@@ -16,7 +16,7 @@ import tensorflow as tf
 temp = []
 ice = []
 
-with open('iceweather.csv', encoding='cp949') as f:
+with open('iceweather.csv', encoding='utf-8') as f:
     data = csv.reader(f)
     next(data)  # 헤더 건너뛰기
     for row in data:
